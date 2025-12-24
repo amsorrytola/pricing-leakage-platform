@@ -1,6 +1,14 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+// frontend/lib/api.ts
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
 
-export async function healthCheck() {
-  const res = await fetch(`${API_BASE}/health`);
+export async function fetchWorkspaceSummary(institutionId: string) {
+  const res = await fetch(
+    `${API_BASE}/api/workspace/summary?institution_id=${institutionId}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch workspace summary");
+  }
+
   return res.json();
 }
