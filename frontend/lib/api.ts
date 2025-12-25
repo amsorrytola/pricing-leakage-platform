@@ -12,3 +12,14 @@ export async function fetchWorkspaceSummary(institutionId: string) {
 
   return res.json();
 }
+
+export async function fetchActivePricingCatalogue(institutionId: string) {
+  const url = `${API_BASE}/api/pricing-catalogue/active?institution_id=${institutionId}`;
+  console.log("DEBUG: Fetching active pricing catalogue", url);
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch active pricing catalogue");
+
+  return res.json();
+}
+
