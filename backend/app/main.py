@@ -4,6 +4,8 @@ from app.routers import workspace
 from app.routers import pricing_catalogue
 from app.routers import contracts
 from app.routers import clients
+from app.routers import normalize
+
 
 
 app = FastAPI(
@@ -37,6 +39,7 @@ app.include_router(workspace.router)
 app.include_router(pricing_catalogue.router)
 app.include_router(contracts.router)
 app.include_router(clients.router)
+app.include_router(normalize.router)
 
 
 @app.get("/health")
