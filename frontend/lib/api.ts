@@ -45,7 +45,6 @@ export async function fetchContractText(contractId: string) {
   return res.json();
 }
 
-
 export async function normalizeContract(contractId: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE}/api/normalize/${contractId}`,
@@ -53,4 +52,13 @@ export async function normalizeContract(contractId: string) {
   );
   return res.json();
 }
+
+export async function detectLeakage(contractId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/leakage/${contractId}`,
+    { method: "POST" }
+  );
+  return res.json();
+}
+
 
