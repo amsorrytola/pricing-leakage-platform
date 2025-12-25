@@ -23,3 +23,26 @@ export async function fetchActivePricingCatalogue(institutionId: string) {
   return res.json();
 }
 
+
+export async function fetchClients(institutionId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/clients?institution_id=${institutionId}`
+  );
+  return res.json();
+}
+
+export async function fetchContracts(clientId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts?client_id=${clientId}`
+  );
+  return res.json();
+}
+
+export async function fetchContractText(contractId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/${contractId}/text`
+  );
+  return res.json();
+}
+
+
