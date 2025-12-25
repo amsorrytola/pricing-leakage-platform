@@ -46,3 +46,11 @@ export async function fetchContractText(contractId: string) {
 }
 
 
+export async function normalizeContract(contractId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/normalize/${contractId}`,
+    { method: "POST" }
+  );
+  return res.json();
+}
+
