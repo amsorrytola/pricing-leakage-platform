@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, File, Form
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from app.services.supabase_client import supabase
 import uuid
 import pdfplumber
@@ -86,6 +86,43 @@ async def upload_contract(
         "client_id": client_id,
         "status": "uploaded"
     }
+
+
+
+@router.get("/")
+def list_contracts(client_id: str):
+    if not client_id or client_id == "undefined":
+        raise HTTPException(status_code=400, detail="client_id is required")
+
+    print("DEBUG: Listing contracts for client", client_id)
+
+    result = (
+        supabase
+        .table("contracts")
+        .select("id, name, status, created_at")
+        .eq("client_id", client_id)
+        .order("created_at", desc=True)
+        .execute()
+    )
+
+    return result.data
+
+@router.get("/{contract_id}/text")
+def get_contract_text(contract_id: str):
+    print("DEBUG: Fetching text for contract", contract_id)
+
+    result = (
+        supabase
+        .table("contract_text")
+        .select("raw_text")
+        .eq("contract_id", contract_id)
+        .single()
+        .execute()
+    )
+
+    return result.data
+
+
 
 
 def clean_text(text: str) -> str:
