@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import workspace
+from app.routers import workspace 
+from app.routers import pricing_catalogue
 
 app = FastAPI(
     title="Pricing Leakage Platform API",
@@ -30,6 +31,7 @@ print("DEBUG: CORS middleware configured")
 # ======================
 
 app.include_router(workspace.router)
+app.include_router(pricing_catalogue.router)
 
 @app.get("/health")
 def health_check():
