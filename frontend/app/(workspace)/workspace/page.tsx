@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { getInstitutionId } from "@/lib/auth";
-import { fetchWorkspaceSummary } from "@/lib/api";
+import { fetchActivePricingCatalogue, fetchWorkspaceSummary } from "@/lib/api";
 
 export default function WorkspaceHome() {
   const [data, setData] = useState<any>(null);
@@ -16,6 +16,10 @@ export default function WorkspaceHome() {
 
       const summary = await fetchWorkspaceSummary(institutionId);
       setData(summary);
+
+      const activeCatalogue = await fetchActivePricingCatalogue(institutionId);
+      console.log("DEBUG: Active catalogue", activeCatalogue);
+
       setLoading(false);
     }
 
@@ -46,7 +50,9 @@ export default function WorkspaceHome() {
         <div className="border p-4 rounded">
           <p className="text-sm text-gray-500">Pricing Catalogue</p>
           <p className="text-lg font-medium">
-            {data.metrics.pricing_catalogue}
+            {data.metrics.pricing_catalogue === "not_configured"
+              ? "Not configured"
+              : "Configured"}
           </p>
         </div>
       </div>
