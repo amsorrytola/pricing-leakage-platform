@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import workspace 
 from app.routers import pricing_catalogue
 from app.routers import contracts
-
+from app.routers import clients
 
 
 app = FastAPI(
@@ -36,6 +36,7 @@ print("DEBUG: CORS middleware configured")
 app.include_router(workspace.router)
 app.include_router(pricing_catalogue.router)
 app.include_router(contracts.router)
+app.include_router(clients.router)
 
 
 @app.get("/health")
