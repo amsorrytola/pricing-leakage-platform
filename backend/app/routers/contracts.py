@@ -1,0 +1,95 @@
+from fastapi import APIRouter, UploadFile, File, Form
+from app.services.supabase_client import supabase
+import uuid
+import pdfplumber
+import io
+
+
+router = APIRouter(prefix="/api/contracts", tags=["contracts"])
+
+@router.post("/upload")
+async def upload_contract(
+    institution_id: str = Form(...),
+    client_name: str = Form(...),
+    file: UploadFile = File(...)
+):
+    print("DEBUG: Uploading contract")
+    print("DEBUG: Institution:", institution_id)
+    print("DEBUG: Client:", client_name)
+    print("DEBUG: File:", file.filename)
+
+    # 1️⃣ Fetch existing client
+    client_result = (
+        supabase
+        .table("clients")
+        .select("*")
+        .eq("institution_id", institution_id)
+        .eq("name", client_name)
+        .execute()
+    )
+
+    if client_result.data:
+        client_id = client_result.data[0]["id"]
+        print("DEBUG: Existing client:", client_id)
+    else:
+        new_client = (
+            supabase
+            .table("clients")
+            .insert({
+                "institution_id": institution_id,
+                "name": client_name
+            })
+            .execute()
+        )
+        client_id = new_client.data[0]["id"]
+        print("DEBUG: New client created:", client_id)
+
+    # 2️⃣ Read file ONCE
+    file_bytes = await file.read()
+
+    contract_id = str(uuid.uuid4())
+    storage_path = f"{institution_id}/{contract_id}/{file.filename}"
+
+    supabase.storage.from_("contracts").upload(
+        storage_path,
+        file_bytes,
+        {"content-type": file.content_type}
+    )
+
+    # 4️⃣ Insert contract metadata
+    supabase.table("contracts").insert({
+        "id": contract_id,
+        "institution_id": institution_id,
+        "client_id": client_id,
+        "name": file.filename,
+        "file_path": storage_path
+    }).execute()
+
+    # 5️⃣ Extract raw text
+    raw_text = ""
+    if file.filename.lower().endswith(".pdf"):
+        with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
+            for page in pdf.pages:
+                extracted = page.extract_text() or ""
+                raw_text += clean_text(extracted)
+
+
+    supabase.table("contract_text").insert({
+        "contract_id": contract_id,
+        "raw_text": raw_text
+    }).execute()
+
+    print("DEBUG: Contract uploaded & text extracted")
+
+    return {
+        "contract_id": contract_id,
+        "client_id": client_id,
+        "status": "uploaded"
+    }
+
+
+def clean_text(text: str) -> str:
+    if not text:
+        return ""
+    # Remove null bytes that Postgres cannot store
+    return text.replace("\x00", "")
