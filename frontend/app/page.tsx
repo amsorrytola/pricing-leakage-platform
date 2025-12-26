@@ -1,4 +1,4 @@
-// frontend/app/(public)/page.tsx
+// frontend/app/page.tsx
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white text-gray-900">

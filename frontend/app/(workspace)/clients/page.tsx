@@ -1,8 +1,10 @@
+// frontend/app/(workspace)/clients/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import { getInstitutionId } from "@/lib/auth";
 import { fetchClients } from "@/lib/api";
+import PageHeader from "@/components/ui/PageHeader";
 import Link from "next/link";
 
 export default function ClientsPage() {
@@ -21,7 +23,10 @@ export default function ClientsPage() {
 
   return (
     <main className="p-10">
-      <h1 className="text-2xl font-semibold mb-6">Clients</h1>
+      <PageHeader
+        title="Clients"
+        description="Corporate and institutional clients linked to contracts."
+      />
 
       <ul className="space-y-4">
         {clients.map((c) => (

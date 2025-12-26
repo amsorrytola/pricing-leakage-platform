@@ -1,3 +1,4 @@
+// frontend/app/(workspace)/contracts/[contractId]/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";

@@ -1,3 +1,4 @@
+// frontend/app/(workspace)/dashboard/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import {
   fetchDashboardSummary,
   fetchLeakageByClient
 } from "@/lib/api";
+import PageHeader from "@/components/ui/PageHeader";
 
 export default function DashboardPage() {
   const [summary, setSummary] = useState<any>(null);
@@ -26,7 +28,11 @@ export default function DashboardPage() {
 
   return (
     <main className="p-10 space-y-6">
-      <h1 className="text-3xl font-semibold">Executive Dashboard</h1>
+      <PageHeader
+  title="Dashboard"
+  description="High-level overview of pricing risk and revenue leakage."
+/>
+
 
       <div className="grid grid-cols-3 gap-6">
         <Stat title="Total Findings" value={summary.total_findings} />
