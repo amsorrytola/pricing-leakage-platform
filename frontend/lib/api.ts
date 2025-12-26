@@ -75,5 +75,19 @@ export async function fetchLeakageByClient(institutionId: string) {
   return res.json();
 }
 
+export async function fetchContractsByInstitution(institutionId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/by-institution?institution_id=${institutionId}`
+  );
+
+  if (!res.ok) {
+    console.error("Failed to fetch contracts", await res.text());
+    return [];
+  }
+
+  return res.json();
+}
+
+
 
 

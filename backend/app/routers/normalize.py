@@ -1,3 +1,4 @@
+# backend/app/routers/normalize.py
 from fastapi import APIRouter
 from app.services.supabase_client import supabase
 
