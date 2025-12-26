@@ -17,3 +17,26 @@ def list_clients(institution_id: str):
     )
 
     return result.data
+
+
+@router.get("/clients")
+def leakage_by_client(institution_id: str):
+    print("DEBUG: Aggregating leakage by client")
+
+    rows = (
+        supabase
+        .table("revenue_leakage_findings")
+        .select("client_id, findings")
+        .eq("institution_id", institution_id)
+        .execute()
+    ).data
+
+    summary = {}
+
+    for row in rows:
+        cid = row["client_id"]
+        summary.setdefault(cid, 0)
+        summary[cid] += len(row["findings"])
+
+    return summary
+
