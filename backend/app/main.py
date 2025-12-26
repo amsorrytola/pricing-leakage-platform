@@ -7,6 +7,8 @@ from app.routers import clients
 from app.routers import normalize
 from app.routers import leakage
 from app.routers import chat
+from app.routers import dashboard
+
 
 
 
@@ -45,6 +47,8 @@ app.include_router(clients.router)
 app.include_router(normalize.router)
 app.include_router(leakage.router)
 app.include_router(chat.router)
+app.include_router(dashboard.router)
+
 
 
 
