@@ -61,4 +61,19 @@ export async function detectLeakage(contractId: string) {
   return res.json();
 }
 
+export async function fetchDashboardSummary(institutionId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/dashboard/summary?institution_id=${institutionId}`
+  );
+  return res.json();
+}
+
+export async function fetchLeakageByClient(institutionId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/dashboard/clients?institution_id=${institutionId}`
+  );
+  return res.json();
+}
+
+
 
