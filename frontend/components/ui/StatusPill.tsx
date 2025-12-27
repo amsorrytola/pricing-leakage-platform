@@ -1,4 +1,16 @@
-export default function StatusPill({ status }: { status: string }) {
+export default function StatusPill({
+  status,
+}: {
+  status?: "healthy" | "warning" | "critical" | "unknown" | null;
+}) {
+  if (!status || status === "unknown") {
+    return (
+      <span className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-600">
+        Not analyzed
+      </span>
+    );
+  }
+
   if (status === "healthy") {
     return (
       <span className="rounded bg-green-100 px-2 py-1 text-xs text-green-700">
