@@ -107,7 +107,6 @@ def list_contracts(client_id: str):
 
     return result.data
 
-
 @router.get("/by-institution")
 def list_contracts_by_institution(institution_id: str):
     print("DEBUG: Listing contracts for institution", institution_id)
@@ -115,13 +114,21 @@ def list_contracts_by_institution(institution_id: str):
     result = (
         supabase
         .table("contracts")
-        .select("id, name, status, created_at")
+        .select("""
+            id,
+            name,
+            status,
+            created_at,
+            leakage_pct,
+            leakage_severity
+        """)
         .eq("institution_id", institution_id)
         .order("created_at", desc=True)
         .execute()
     )
 
     return result.data or []
+
 
 @router.get("/{contract_id}/text")
 def get_contract_text(contract_id: str):
