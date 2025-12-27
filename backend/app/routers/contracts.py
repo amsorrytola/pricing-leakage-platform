@@ -107,27 +107,88 @@ def list_contracts(client_id: str):
 
     return result.data
 
-@router.get("/by-institution")
-def list_contracts_by_institution(institution_id: str):
-    print("DEBUG: Listing contracts for institution", institution_id)
-
-    result = (
+@router.get("/by-client")
+def list_contracts_by_client(
+    client_id: str,
+    search: str | None = None,
+    severity: str | None = None,
+    limit: int = 20,
+    cursor: str | None = None,
+):
+    query = (
         supabase
         .table("contracts")
-        .select("""
-            id,
-            name,
-            status,
-            created_at,
-            leakage_pct,
-            leakage_severity
-        """)
-        .eq("institution_id", institution_id)
-        .order("created_at", desc=True)
-        .execute()
+        .select(
+            "id, name, leakage_pct, leakage_severity",
+            count="exact"
+        )
+        .eq("client_id", client_id)
+        .order("id")
+        .limit(limit)
     )
 
-    return result.data or []
+    if cursor:
+        query = query.gt("id", cursor)
+
+    if search:
+        query = query.ilike("name", f"%{search}%")
+
+    if severity:
+        query = query.eq("leakage_severity", severity)
+
+    res = query.execute()
+
+    data = res.data or []
+    next_cursor = data[-1]["id"] if len(data) == limit else None
+
+    return {
+        "data": data,
+        "next_cursor": next_cursor,
+        "total": res.count
+    }
+
+
+@router.get("/by-institution")
+def list_contracts_by_institution(
+    institution_id: str,
+    search: str | None = None,
+    severity: str | None = None,
+    limit: int = 20,
+    cursor: str | None = None,
+):
+    print("DEBUG: Listing contracts (paginated)")
+
+    query = (
+        supabase
+        .table("contracts")
+        .select(
+            "id, name, status, leakage_pct, leakage_severity",
+            count="exact"
+        )
+        .eq("institution_id", institution_id)
+        .order("id")
+        .limit(limit)
+    )
+
+    if cursor:
+        query = query.gt("id", cursor)
+
+    if search:
+        query = query.ilike("name", f"%{search}%")
+
+    if severity:
+        query = query.eq("leakage_severity", severity)
+
+    res = query.execute()
+
+    data = res.data or []
+    next_cursor = data[-1]["id"] if len(data) == limit else None
+
+    return {
+        "data": data,
+        "next_cursor": next_cursor,
+        "total": res.count
+    }
 
 
 @router.get("/{contract_id}/text")
