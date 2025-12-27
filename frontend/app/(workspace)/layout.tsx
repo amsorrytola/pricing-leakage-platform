@@ -11,15 +11,18 @@ export default function WorkspaceLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
+    <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 overflow-hidden">
       <Sidebar />
-
-      {/* Main area */}
-      <div className="flex flex-col flex-1">
+      
+      <div className="flex flex-col flex-1 min-w-0">
         <Header />
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
+        
+        <main className="flex-1 overflow-y-auto">
+          <div className="h-full p-8 animate-in fade-in duration-300">
+            <div className="mx-auto max-w-7xl">
+              {children}
+            </div>
+          </div>
         </main>
       </div>
     </div>
