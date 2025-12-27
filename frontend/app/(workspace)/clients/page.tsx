@@ -1,42 +1,87 @@
-// frontend/app/(workspace)/clients/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
-import { getInstitutionId } from "@/lib/auth";
-import { fetchClients } from "@/lib/api";
-import PageHeader from "@/components/ui/PageHeader";
 import Link from "next/link";
 
+import PageHeader from "@/components/ui/PageHeader";
+import { getInstitutionId } from "@/lib/auth";
+import { fetchClientsPaginated } from "@/lib/api";
+import useDebouncedValue from "@/lib/useDebouncedValue";
+
+type Client = {
+  id: string;
+  name: string;
+};
+
 export default function ClientsPage() {
-  const [clients, setClients] = useState<any[]>([]);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebouncedValue(search, 400);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  async function loadClients(reset = false) {
+    const institutionId = await getInstitutionId();
+    if (!institutionId) return;
+
+    setLoading(true);
+
+    const res = await fetchClientsPaginated({
+      institution_id: institutionId,
+      search: debouncedSearch || undefined,
+      cursor: reset ? undefined : cursor ?? undefined,
+      limit: 20,
+    });
+
+    setClients((prev) =>
+      reset ? res.data : [...prev, ...res.data]
+    );
+    setCursor(res.next_cursor);
+    setHasMore(Boolean(res.next_cursor));
+    setLoading(false);
+  }
 
   useEffect(() => {
-    async function load() {
-      const institutionId = await getInstitutionId();
-      if (!institutionId) return;
-
-      const data = await fetchClients(institutionId);
-      setClients(data);
-    }
-    load();
-  }, []);
+    loadClients(true);
+  }, [debouncedSearch]);
 
   return (
-    <main className="p-10">
+    <div className="space-y-6">
       <PageHeader
         title="Clients"
-        description="Corporate and institutional clients linked to contracts."
+        description="All corporate and institutional clients."
       />
 
-      <ul className="space-y-4">
+      <input
+        type="text"
+        placeholder="Search clients…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-64 rounded border px-3 py-2 text-sm"
+      />
+
+      <div className="space-y-3">
         {clients.map((c) => (
-          <li key={c.id} className="border p-4 rounded">
-            <Link href={`/clients/${c.id}`} className="font-medium">
-              {c.name}
-            </Link>
-          </li>
+          <Link
+            key={c.id}
+            href={`/clients/${c.id}`}
+            className="block rounded border p-4 hover:bg-gray-50"
+          >
+            {c.name}
+          </Link>
         ))}
-      </ul>
-    </main>
+      </div>
+
+      {hasMore && (
+        <button
+          onClick={() => loadClients()}
+          disabled={loading}
+          className="rounded border px-4 py-2 text-sm"
+        >
+          {loading ? "Loading…" : "Load more"}
+        </button>
+      )}
+    </div>
   );
 }
