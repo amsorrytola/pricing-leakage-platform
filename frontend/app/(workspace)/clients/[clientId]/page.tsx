@@ -1,3 +1,4 @@
+// frontend/app/(workspace)/clients/[clientId]/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";

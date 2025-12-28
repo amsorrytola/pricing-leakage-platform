@@ -1,133 +1,234 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getInstitutionId } from "@/lib/auth";
+import { DEFAULT_CATALOGUE } from "@/lib/defaultPricingCatalogue";
 
-type TransactionFeeRule = {
-  base_pct: number;
-  min_pct: number;
-  max_discount_pct: number;
-  annual_escalation_pct: number;
+/* ---------------- TYPES ---------------- */
+
+type Catalogue = {
+  catalogue_metadata: any;
+  pricing_categories: Record<
+    string,
+    Record<
+      string,
+      {
+        service_code?: string;
+        unit?: string;
+        price?: number;
+      }
+    >
+  >;
 };
 
+/* ---------------- PAGE ---------------- */
+
 export default function PricingCataloguePage() {
-  const [name, setName] = useState("");
+  const [catalogue, setCatalogue] = useState<Catalogue>(DEFAULT_CATALOGUE);
+  const [catalogueId, setCatalogueId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
-  const [transactionFee, setTransactionFee] =
-    useState<TransactionFeeRule>({
-      base_pct: 2.5,
-      min_pct: 2.0,
-      max_discount_pct: 20,
-      annual_escalation_pct: 5,
-    });
+  /* ---------------- LOAD EXISTING CATALOGUE ---------------- */
 
-  const [mmrg, setMmrg] = useState<number>(5000);
+  useEffect(() => {
+    async function loadCatalogue() {
+      const institutionId = await getInstitutionId();
+      if (!institutionId) return;
 
-  async function handleCreate() {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/pricing-catalogue/latest?institution_id=${institutionId}`
+      ).then((r) => r.json());
+
+      if (res?.rules) {
+        setCatalogue({
+          ...DEFAULT_CATALOGUE,
+          ...res.rules,
+          pricing_categories: {
+            ...DEFAULT_CATALOGUE.pricing_categories,
+            ...res.rules.pricing_categories,
+          },
+        });
+        setCatalogueId(res.id);
+      }
+    }
+
+    loadCatalogue();
+  }, []);
+
+  /* ---------------- SAFETY GUARD ---------------- */
+
+  if (!catalogue || !catalogue.pricing_categories) {
+    return (
+      <main className="p-10 text-sm text-gray-600">
+        Loading pricing catalogue…
+      </main>
+    );
+  }
+
+  /* ---------------- CATEGORY EDITOR ---------------- */
+
+  function PricingCategoryEditor({ categoryKey }: { categoryKey: string }) {
+    const services = catalogue.pricing_categories[categoryKey] || {};
+
+    function commit(serviceKey: string, patch: any) {
+      setCatalogue((prev) => ({
+        ...prev,
+        pricing_categories: {
+          ...prev.pricing_categories,
+          [categoryKey]: {
+            ...prev.pricing_categories[categoryKey],
+            [serviceKey]: {
+              ...prev.pricing_categories[categoryKey][serviceKey],
+              ...patch,
+            },
+          },
+        },
+      }));
+    }
+
+    function addService() {
+      const key = `service_${Date.now()}`;
+      commit(key, { service_code: "", unit: "", price: 0 });
+    }
+
+    function removeService(serviceKey: string) {
+      const copy = { ...services };
+      delete copy[serviceKey];
+
+      setCatalogue((prev) => ({
+        ...prev,
+        pricing_categories: {
+          ...prev.pricing_categories,
+          [categoryKey]: copy,
+        },
+      }));
+    }
+
+    return (
+      <div className="space-y-4">
+        {Object.entries(services).map(([key, svc]: any) => {
+          const [local, setLocal] = useState({
+            service_code: svc.service_code ?? "",
+            unit: svc.unit ?? "",
+            price: svc.price ?? 0,
+          });
+
+          return (
+            <div key={key} className="grid grid-cols-4 gap-3 items-center">
+              <input
+                className="border rounded p-2 text-sm"
+                placeholder="Service code"
+                value={local.service_code}
+                onChange={(e) =>
+                  setLocal({ ...local, service_code: e.target.value })
+                }
+                onBlur={() => commit(key, { service_code: local.service_code })}
+              />
+
+              <input
+                className="border rounded p-2 text-sm"
+                placeholder="Unit"
+                value={local.unit}
+                onChange={(e) => setLocal({ ...local, unit: e.target.value })}
+                onBlur={() => commit(key, { unit: local.unit })}
+              />
+
+              <input
+                type="number"
+                className="border rounded p-2 text-sm"
+                placeholder="Price"
+                value={local.price}
+                onChange={(e) =>
+                  setLocal({ ...local, price: Number(e.target.value) })
+                }
+                onBlur={() => commit(key, { price: local.price })}
+              />
+
+              <button
+                onClick={() => removeService(key)}
+                className="text-red-600 text-sm"
+              >
+                ✕
+              </button>
+            </div>
+          );
+        })}
+
+        <button onClick={addService} className="text-sm text-blue-600">
+          + Add Service
+        </button>
+      </div>
+    );
+  }
+
+  /* ---------------- SAVE ---------------- */
+
+  async function saveCatalogue() {
     setSaving(true);
 
     const institutionId = await getInstitutionId();
-    if (!institutionId) {
-      alert("Institution not found");
-      setSaving(false);
-      return;
-    }
+    if (!institutionId) return;
 
-    const rules = {
-      transaction_fee: transactionFee,
-      minimum_monthly_revenue: mmrg,
+    const payload = {
+      institution_id: institutionId,
+      name:
+        catalogue.catalogue_metadata?.catalogue_version ?? "Pricing Catalogue",
+      rules: catalogue,
     };
 
-    console.log("DEBUG: Creating pricing catalogue", rules);
+    if (catalogueId) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/pricing-catalogue/${catalogueId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+    } else {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/pricing-catalogue/`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      ).then((r) => r.json());
 
-    await fetch("http://localhost:8000/api/pricing-catalogue/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        institution_id: institutionId,
-        name,
-        rules,
-      }),
-    });
+      setCatalogueId(res.id);
+    }
 
     setSaving(false);
-    alert("Pricing catalogue created (draft)");
+    alert("Pricing catalogue saved");
   }
 
+  /* ---------------- UI ---------------- */
+
   return (
-    <main className="max-w-3xl space-y-8 p-10">
-      {/* Header */}
-      <div>
+    <main className="max-w-5xl mx-auto p-10 space-y-10">
+      <header>
         <h1 className="text-2xl font-semibold">Pricing Catalogue</h1>
         <p className="text-sm text-gray-600">
-          Define standard pricing rules used to detect revenue leakage.
+          Define standard pricing used for leakage detection.
         </p>
-      </div>
+      </header>
 
-      {/* Catalogue Name */}
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Catalogue Name
-        </label>
-        <input
-          className="border rounded p-2 w-full"
-          placeholder="Standard Pricing 2025"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
+      {Object.keys(catalogue.pricing_categories).map((categoryKey) => (
+        <section key={categoryKey} className="border rounded p-6 space-y-4">
+          <h2 className="font-semibold capitalize">
+            {categoryKey.replaceAll("_", " ")}
+          </h2>
+          <PricingCategoryEditor categoryKey={categoryKey} />
+        </section>
+      ))}
 
-      {/* Transaction Fee Section */}
-      <section className="border rounded p-6 space-y-4">
-        <h2 className="font-semibold text-lg">
-          Transaction Fee Rules
-        </h2>
-
-        {[
-          ["Base Fee (%)", "base_pct"],
-          ["Minimum Fee (%)", "min_pct"],
-          ["Max Discount Allowed (%)", "max_discount_pct"],
-          ["Annual Escalation (%)", "annual_escalation_pct"],
-        ].map(([label, key]) => (
-          <div key={key} className="grid grid-cols-3 gap-4 items-center">
-            <label className="text-sm text-gray-700">{label}</label>
-            <input
-              type="number"
-              className="border rounded p-2 col-span-2"
-              value={(transactionFee as any)[key]}
-              onChange={(e) =>
-                setTransactionFee({
-                  ...transactionFee,
-                  [key]: Number(e.target.value),
-                })
-              }
-            />
-          </div>
-        ))}
-      </section>
-
-      {/* MMRG */}
-      <section className="border rounded p-6 space-y-3">
-        <h2 className="font-semibold text-lg">
-          Minimum Monthly Revenue Guarantee
-        </h2>
-        <input
-          type="number"
-          className="border rounded p-2 w-full"
-          value={mmrg}
-          onChange={(e) => setMmrg(Number(e.target.value))}
-        />
-      </section>
-
-      {/* Submit */}
       <div className="flex justify-end">
         <button
-          onClick={handleCreate}
-          disabled={saving || !name}
-          className="rounded bg-black px-5 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-50"
+          onClick={saveCatalogue}
+          disabled={saving}
+          className="bg-black text-white px-6 py-2 rounded text-sm disabled:opacity-50"
         >
-          {saving ? "Saving..." : "Create Draft Catalogue"}
+          {saving ? "Saving..." : "Save Catalogue"}
         </button>
       </div>
     </main>
