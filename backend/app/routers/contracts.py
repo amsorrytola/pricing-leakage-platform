@@ -214,3 +214,42 @@ def clean_text(text: str) -> str:
         return ""
     # Remove null bytes that Postgres cannot store
     return text.replace("\x00", "")
+
+
+@router.get("/{contract_id}/billable-services")
+def get_billable_services(contract_id: str):
+    """
+    Returns the list of service_codes that are priced in this contract
+    """
+
+    pricing = (
+        supabase
+        .table("normalized_contracts")
+        .select("extracted_terms")
+        .eq("contract_id", contract_id)
+        .order("created_at", desc=True)
+        .limit(1)
+        .execute()
+        )
+    if not pricing.data:
+        raise HTTPException(404, "Contract not normalized")
+
+    terms = pricing.data[0]["extracted_terms"]
+
+
+    # ⚠️ Amol:
+    # Later replace this mapping with RAG-extracted service-level pricing
+    services = []
+
+    if "transaction_fees" in terms:
+        services.extend([
+            "ACH_TXN",
+            "RTGS",
+            "SWIFT"
+        ])
+
+    return {
+        "contract_id": contract_id,
+        "services": services
+    }
+

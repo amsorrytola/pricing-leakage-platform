@@ -82,3 +82,39 @@ def activate_pricing_catalogue(catalogue_id: str):
 
     return result.data[0]
 
+
+@router.get("/latest")
+def get_latest_pricing_catalogue(institution_id: str):
+    res = (
+        supabase
+        .table("pricing_catalogues")
+        .select("*")
+        .eq("institution_id", institution_id)
+        .order("created_at", desc=True)
+        .limit(1)
+        .execute()
+    )
+
+    if not res.data:
+        return None
+
+    return res.data[0]
+
+
+@router.put("/{catalogue_id}")
+def update_pricing_catalogue(catalogue_id: str, payload: PricingCatalogueCreate):
+    res = (
+        supabase
+        .table("pricing_catalogues")
+        .update({
+            "name": payload.name,
+            "rules": payload.rules
+        })
+        .eq("id", catalogue_id)
+        .execute()
+    )
+
+    return res.data[0]
+
+
+

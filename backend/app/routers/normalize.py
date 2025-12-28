@@ -52,3 +52,25 @@ def normalize_contract(contract_id: str):
         "status": "normalized",
         "terms": normalized_terms
     }
+
+
+
+@router.get("/{contract_id}")
+def get_normalized_contract(contract_id: str):
+    result = (
+        supabase
+        .table("normalized_contracts")
+        .select("extracted_terms, created_at")
+        .eq("contract_id", contract_id)
+        .order("created_at", desc=True)
+        .limit(1)
+        .execute()
+    )
+
+    if not result.data:
+        return {"normalized": False}
+
+    return {
+        "normalized": True,
+        "terms": result.data[0]["extracted_terms"]
+    }

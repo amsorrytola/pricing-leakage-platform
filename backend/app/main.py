@@ -9,6 +9,7 @@ from app.routers import normalize
 from app.routers import leakage
 from app.routers import chat
 from app.routers import dashboard
+from app.routers import volume
 
 app = FastAPI(
     title="Pricing Leakage Platform API",
@@ -45,6 +46,7 @@ app.include_router(normalize.router)
 app.include_router(leakage.router)
 app.include_router(chat.router)
 app.include_router(dashboard.router)
+app.include_router(volume.router)
 
 
 

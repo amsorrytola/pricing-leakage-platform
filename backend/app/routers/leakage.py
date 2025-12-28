@@ -184,3 +184,34 @@ def detect_revenue_leakage(contract_id: str):
         "categories": leakage_categories,
         "findings": findings
     }
+
+
+@router.get("/{contract_id}")
+def get_leakage_result(contract_id: str):
+    findings_res = (
+        supabase
+        .table("revenue_leakage_findings")
+        .select("findings, created_at")
+        .eq("contract_id", contract_id)
+        .order("created_at", desc=True)
+        .limit(1)
+        .execute()
+    )
+
+    contract_res = (
+        supabase
+        .table("contracts")
+        .select("leakage_pct, leakage_severity, leakage_categories, last_analyzed_at")
+        .eq("id", contract_id)
+        .single()
+        .execute()
+    )
+
+    if not findings_res.data:
+        return {"analyzed": False}
+
+    return {
+        "analyzed": True,
+        "summary": contract_res.data,
+        "findings": findings_res.data[0]["findings"]
+    }
