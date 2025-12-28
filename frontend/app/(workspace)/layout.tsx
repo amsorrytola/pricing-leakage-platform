@@ -11,7 +11,7 @@ export default function WorkspaceLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 overflow-hidden">
+    <div className="flex h-screen bg-white overflow-hidden">
       <Sidebar />
       
       <div className="flex flex-col flex-1 min-w-0">
