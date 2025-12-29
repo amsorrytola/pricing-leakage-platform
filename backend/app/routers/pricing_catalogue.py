@@ -20,7 +20,7 @@ def create_pricing_catalogue(payload: PricingCatalogueCreate):
             "institution_id": payload.institution_id,
             "name": payload.name,
             "rules": payload.rules,
-            "status": "draft"
+            "status": "active"
         })
         .execute()
     )
