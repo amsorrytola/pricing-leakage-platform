@@ -253,3 +253,40 @@ def get_billable_services(contract_id: str):
         "services": services
     }
 
+
+@router.get("/{contract_id}")
+def get_contract(contract_id: str):
+    result = (
+        supabase
+        .table("contracts")
+        .select("id, name, client_id, institution_id, file_path, created_at")
+        .eq("id", contract_id)
+        .single()
+        .execute()
+    )
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Contract not found")
+
+    return result.data
+
+
+@router.get("/{contract_id}/pdf-url")
+def get_contract_pdf_url(contract_id: str):
+    contract = (
+        supabase
+        .table("contracts")
+        .select("file_path")
+        .eq("id", contract_id)
+        .single()
+        .execute()
+    )
+
+    if not contract.data:
+        raise HTTPException(status_code=404, detail="Contract not found")
+
+    signed = supabase.storage.from_("contracts").create_signed_url(
+        contract.data["file_path"], 60 * 60
+    )
+
+    return {"url": signed["signedURL"]}
