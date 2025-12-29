@@ -32,9 +32,7 @@ export default function ClientContractsPage() {
       limit: 20,
     });
 
-    setContracts((prev) =>
-      reset ? res.data : [...prev, ...res.data]
-    );
+    setContracts((prev) => (reset ? res.data : [...prev, ...res.data]));
     setCursor(res.next_cursor);
     setHasMore(Boolean(res.next_cursor));
     setLoading(false);
@@ -46,61 +44,57 @@ export default function ClientContractsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Client Contracts" />
+      <PageHeader
+        title="Client Contracts"
+        description="View and analyze all contracts for this client"
+        action={
+          <Link
+            href="/clients"
+            className="px-4 py-2 rounded-lg border border-slate-300 text-sm hover:bg-slate-100"
+          >
+            Back to Clients
+          </Link>
+        }
+      />
 
-      <div className="flex gap-4">
-        <input
-          type="text"
-          placeholder="Search contracts…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-64 rounded border px-3 py-2 text-sm"
-        />
-
-        <select
-          value={severity}
-          onChange={(e) => setSeverity(e.target.value)}
-          className="rounded border px-3 py-2 text-sm"
-        >
-          <option value="all">All severities</option>
-          <option value="critical">High leakage</option>
-          <option value="warning">Attention</option>
-          <option value="healthy">Healthy</option>
-        </select>
-      </div>
-
-      <div className="space-y-3">
+      <div className="space-y-4">
         {contracts.map((c) => (
           <div
             key={c.id}
-            className="flex justify-between rounded border p-4"
+            className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 hover:shadow transition-all"
           >
             <div>
-              <div className="font-medium">{c.name}</div>
-              <div className="flex gap-3 text-sm">
-                {c.leakage_pct ?? "—"}%
+              <h3 className="font-semibold text-slate-900">{c.name}</h3>
+              <div className="flex items-center gap-3 text-sm mt-1">
                 <StatusPill status={c.leakage_severity} />
+                {c.leakage_pct !== null && (
+                  <span className="text-slate-600">
+                    {c.leakage_pct}% leakage
+                  </span>
+                )}
               </div>
             </div>
 
             <Link
               href={`/contracts/${c.id}`}
-              className="text-sm text-blue-600"
+              className="text-blue-600 hover:underline text-sm"
             >
-              View
+              View Details →
             </Link>
           </div>
         ))}
       </div>
 
       {hasMore && (
-        <button
-          onClick={() => loadContracts()}
-          disabled={loading}
-          className="rounded border px-4 py-2 text-sm"
-        >
-          {loading ? "Loading…" : "Load more"}
-        </button>
+        <div className="flex justify-center pt-4">
+          <button
+            onClick={() => loadContracts()}
+            disabled={loading}
+            className="px-6 py-3 rounded-lg border border-slate-300 bg-white text-sm hover:bg-slate-50 disabled:opacity-50"
+          >
+            {loading ? "Loading..." : "Load More"}
+          </button>
+        </div>
       )}
     </div>
   );
