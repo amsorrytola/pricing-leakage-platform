@@ -20,6 +20,8 @@ def detect_revenue_leakage(contract_id: str):
         .execute()
     )
 
+    
+
     if not normalized_res.data:
         raise HTTPException(status_code=404, detail="Contract not normalized")
 
@@ -33,10 +35,11 @@ def detect_revenue_leakage(contract_id: str):
         .table("pricing_catalogues")
         .select("*")
         .eq("institution_id", normalized["institution_id"])
-        .eq("status", "active")
         .limit(1)
         .execute()
     )
+
+    print("DEBUG: Fetched pricing catalogue", pricing_res.data)
 
     if not pricing_res.data:
         raise HTTPException(
