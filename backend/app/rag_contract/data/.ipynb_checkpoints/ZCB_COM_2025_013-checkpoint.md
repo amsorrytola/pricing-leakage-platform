@@ -1,0 +1,585 @@
+# COMMERCIAL BANKING SERVICES AGREEMENT
+
+**Agreement ID:** ZCB/COM/2025/013  
+**Effective Date:** 2025-01-15  
+**Duration:** 3 years  
+**Bank:** ZENITH COMMERCIAL BANK PLC, Mumbai, India  
+**Client:** ITServices GlobalStaff Solutions  
+**Client Registration:** CIN: U72200KA2016PTC088765  
+**Principal Place of Business:** Bangalore, Karnataka  
+**Relationship Manager:** Sanjay Reddy  
+**Contact Number:** +91-80-4117-8888
+
+---
+
+## 1. INTRODUCTION AND PURPOSE
+
+### 1.1 Scope of Services
+
+This Commercial Banking Services Agreement ("Agreement"), entered into as of 2025-01-15 ("Effective Date"), by and between **ZENITH COMMERCIAL BANK PLC** ("Bank"), a duly registered banking institution with principal offices at 201-B, Tower A, Financial Park, Mumbai 400 014, India, and **ITServices GlobalStaff Solutions** ("Client"), a private limited company with principal offices at Bangalore, Karnataka, India.
+
+The Bank agrees to provide comprehensive commercial banking services to the Client, including but not limited to:
+
+- **Cash Management Services:** Account maintenance, daily statement delivery, monthly reconciliation reports, consolidated reporting across multiple accounts, and real-time balance inquiry access through online banking portal
+- **Domestic Payment Processing:** Automated Clearing House (ACH) origination and processing, Real-Time Gross Settlement (RTGS) for large-value transactions, National Electronic Funds Transfer (NEFT) for standard-value transfers, and domestic wire transfers between banks
+- **International Payment Services:** SWIFT-based cross-border payments in major currencies (USD, EUR, GBP, JPY), FATCA compliance screening, correspondent bank coordination, and international fund settlement
+- **Trade Finance Facilities:** Issuance and management of Letters of Credit (documentary credits) for import-export transactions, issuance of various bank guarantees (performance, bid bonds, financial), and LC amendments and negotiation services
+- **Working Capital Financing Solutions:** Cash Credit Facility with revolving limits, Trade Credit Lines for invoice-based financing, and interest rate structures linked to Base Rate with negotiated spreads
+- **Online and Digital Banking:** 24/7 secure online banking portal access with transaction initiation capability, automated sweep account management for liquidity optimization, API integration for direct system connectivity, and customized MIS reporting dashboards
+- **Treasury Management Advisory:** Liquidity forecasting, fund positioning strategy, and optimization of idle cash balances
+
+### 1.2 Relationship and Regulatory Framework
+
+This Agreement establishes a **banker-client relationship** governed by the laws of India and regulations issued by the Reserve Bank of India (RBI). The Bank shall act as a service provider in a commercial capacity and not as a fiduciary, except where explicitly stated in writing and mutually agreed by both parties.
+
+The Bank shall comply with all applicable RBI guidelines, including but not limited to:
+- RBI Master Circular on Know Your Customer (KYC) requirements and Anti-Money Laundering (AML) obligations
+- RBI Information Security guidelines and cyber security standards
+- RBI regulations on customer data protection and privacy
+- RBI guidelines on foreign exchange operations and international remittances
+- Reserve Bank of India (Liberalized Remittance Scheme) 2015 for eligible customers
+
+### 1.3 Duration and Renewal
+
+This Agreement shall be effective for a period of **3 (Three) years** from the Effective Date (January 15, 2025 through January 14, 2028), unless earlier terminated in accordance with Section 9 hereof.
+
+Upon expiration, the Agreement shall automatically renew for successive one-year periods unless either party provides written notice of non-renewal at least ninety (90) days prior to the expiration date. Either party may terminate this Agreement without cause upon ninety (90) days written notice to the other party.
+
+---
+
+## 2. SERVICES DESCRIPTION AND SPECIFICATIONS
+
+### 2.1 Cash Management Services
+
+#### 2.1.1 Account Maintenance and Reconciliation
+
+The Bank shall maintain Current Account (Rupees) account(s) for the Client. The account(s) shall be subject to the Bank's standard terms and conditions for commercial accounts. The Client shall have the following services included:
+
+- **Daily Account Statements:** The Bank shall deliver daily statements via secure online banking portal, detailing all transactions, current balances, available balances, and interest earned (if applicable)
+- **Monthly Reconciliation Reports:** Comprehensive monthly reconciliation reports with transaction-level detail, including transaction dates, amounts, beneficiary details, and running balances
+- **Real-Time Balance Inquiry:** The Client shall have 24/7 access to real-time balance inquiry through the online banking portal, enabling the Client to check available and current balances at any time
+- **Consolidated Reporting:** For Clients maintaining multiple accounts with the Bank, consolidated reporting showing aggregate balances and transactions across all accounts for simplified treasury management
+
+#### 2.1.2 Liquidity Management and Sweep Accounts
+
+The Bank provides automated liquidity management services through sweep account arrangements. The Client may authorize the Bank to automatically transfer excess balances between designated accounts to optimize liquidity and maximize interest earnings. This service includes daily monitoring of account balances, automatic fund transfers based on pre-defined thresholds, and detailed sweep activity reporting.
+
+### 2.2 Payment Processing Services - Domestic
+
+#### 2.2.1 Automated Clearing House (ACH)
+
+The Client authorizes the Bank to process ACH debits and credits on the Client's behalf. The Bank shall:
+
+- Accept ACH files in prescribed format from the Client or Client's designated service provider
+- Validate ACH file format and transaction details
+- Submit files to the RBI's ACH network for processing
+- Provide file-level acceptance and rejection confirmations
+- Support same-day and next-day settlement options as per RBI guidelines
+- Maintain transaction audit trails and provide detailed ACH reports
+
+**Operational Parameters:**
+- Maximum file size: 50,000 transactions per file
+- Maximum monthly volume: Unlimited subject to account balance and credit limits
+- Settlement: T+0 (same day) or T+1 (next day) based on submission time
+- Supported transaction types: Salary payments, vendor payments, refunds, collections, inter-company transfers
+
+#### 2.2.2 RTGS (Real-Time Gross Settlement)
+
+For large-value transfers requiring immediate settlement, the Client may utilize RTGS through the RBI's Real-Time Gross Settlement system. RTGS is available for transactions exceeding INR 2,00,000 (Two Lakh Rupees).
+
+**Service Features:**
+- Real-time settlement of funds within minutes of transaction submission
+- Gross settlement basis ensuring no counterparty risk
+- Applicable to both intra-bank and inter-bank transfers
+- Supported 24/7 through online banking portal and phone banking
+- Full transaction traceability and settlement confirmation
+
+#### 2.2.3 NEFT (National Electronic Funds Transfer)
+
+For standard-value transfers up to INR 1,00,000 (One Lakh Rupees), the Client may utilize NEFT through the RBI's National Electronic Funds Transfer system.
+
+**Service Features:**
+- Electronic transfer of funds to any beneficiary with a bank account in India
+- Batch settlement in multiple cycles throughout the day
+- Settlement timelines: Typically 30 minutes to 2 hours depending on cycle
+- Applicable to both retail and wholesale transactions
+- Real-time confirmation of fund transfer status
+
+#### 2.2.4 Domestic Wire Transfers
+
+For direct bank-to-bank fund transfers within India (excluding RTGS/NEFT), the Bank provides domestic wire transfer services. These transfers are utilized for urgent fund movement between branches of different banks.
+
+**Service Scope:**
+- Any amount domestic transfer between banks
+- Same-day or next-day settlement depending on submission time
+- Full beneficiary detail verification prior to processing
+- Standard clearing procedures through clearing houses
+
+### 2.3 Payment Processing Services - International
+
+#### 2.3.1 International Wire Transfers (SWIFT)
+
+The Bank facilitates international wire transfers through the SWIFT (Society for Worldwide Interbank Financial Telecommunication) network for remittance of funds to beneficiaries in foreign countries.
+
+**Supported Features:**
+- Coverage: 200+ countries and territories worldwide
+- Supported currencies: USD, EUR, GBP, JPY, AUD, CAD, SGD, HKD, INR and other major currencies
+- Processing time: 1-3 business days depending on destination country and time zone differences
+- Correspondent bank network for fund settlement in destination country
+- Real-time SWIFT message tracking and status updates
+- Compliance with international sanctions screening and regulatory requirements
+
+#### 2.3.2 FATCA Compliance Screening
+
+All outbound international remittances are subject to mandatory Foreign Account Tax Compliance Act (FATCA) screening. The Bank shall:
+
+- Verify that payees do not fall under US tax reporting requirements
+- Screen transactions against OFAC (Office of Foreign Assets Control) sanctions lists
+- Maintain FATCA certification and compliance documentation
+- Report annually on FATCA-relevant transactions to Indian tax authorities as mandated by law
+- Provide clients with FATCA compliance status for their records
+
+**Scope:** Applies to all international wire transfers and cross-border payments initiated by the Client.
+
+### 2.4 Trade Finance Services
+
+#### 2.4.1 Letters of Credit (Documentary Credit)
+
+The Bank issues, confirms, advises, and manages Letters of Credit for the Client's import and export transactions. A Letter of Credit is a financial instrument issued by the Bank on behalf of the Client guaranteeing payment to the export/seller upon fulfillment of specified conditions.
+
+**Types of LCs Handled:**
+- **Sight LCs:** Payment made upon presentation of compliant documents (30-45 days typical validity)
+- **Usance LCs:** Payment deferred to a future date (60-180 days typical validity)
+- **Irrevocable LCs:** Cannot be cancelled or modified without beneficiary consent
+- **Revolving LCs:** Multiple drawings permitted against the same LC
+- **Transferable LCs:** Beneficiary may transfer rights to another party
+
+**Operational Process:**
+1. Client submits LC application with full transaction details
+2. Bank reviews and verifies Client's creditworthiness and collateral/margin
+3. Bank prepares LC document incorporating all Client requirements
+4. Bank transmits LC to issuing/confirming bank via SWIFT
+5. Bank receives and negotiates documents from beneficiary
+6. Bank arranges reimbursement and settlement with Client
+
+**Maximum LC Amount:** Up to INR 50,000,000 (Fifty Lakh Rupees) per transaction, subject to Client's sanctioned credit limit and Bank's approval.
+
+**LC Validity Period:** Up to 180 days from date of issuance, extendable by mutual agreement.
+
+#### 2.4.2 Bank Guarantees
+
+The Bank issues various types of guarantees on behalf of the Client to third parties, serving as a financial commitment/promise to pay if the Client fails to perform specified obligations.
+
+**Types of Guarantees:**
+- **Performance Guarantees:** For contract performance security (e.g., contractor completes construction project)
+- **Bid Bonds/Tender Guarantees:** For tender participation and bid security (e.g., earnest money for government contracts)
+- **Financial Guarantees:** For advance payment security (e.g., secure payment made by buyer before goods delivered)
+- **Deferred Payment Guarantees:** For payment on credit terms
+- **Retention Guarantees:** To secure retained amounts under contracts
+
+**Guarantee Parameters:**
+- Maximum amount per transaction: Up to INR 100,000,000 (One Crore Rupees) subject to Client's credit limit
+- Guarantee tenor: Typically up to 24 months, extendable
+- Issued against margin/collateral as per Bank's credit policy
+- Issued in local currency (INR) or foreign currencies as required
+
+---
+
+## 3. FEES AND CHARGES SCHEDULE
+
+### 3.1 Overview of Banking Services and Associated Costs
+
+The Client acknowledges that Zenith Commercial Bank charges fees for all commercial banking services provided under this Agreement. These fees are determined based on the nature, volume, and complexity of services utilized by the Client. 
+
+All fees charged to the Client are in Indian Rupees (INR) unless explicitly stated otherwise. **Fees are exclusive of Goods and Services Tax (GST)**, which shall be charged at the applicable rate (currently 18%) as per Indian tax laws and invoiced separately.
+
+Fees are non-refundable except in cases of erroneous billing or service failure remedies as specified in Section 5 of this Agreement.
+
+### 3.2 Cash Management Services
+
+**Account Maintenance Fee:** The Client shall pay a monthly fee of **2500 rupees** for account maintenance, daily statement delivery via online portal, and basic account management services. This fee is charged monthly and is due within 15 days of invoice.
+
+**Monthly Reconciliation Report:** Additional monthly reconciliation reports beyond the standard monthly report shall be charged at **750 rupees per report**. These reports include transaction-level detail, balance aging analysis, and comparative analysis with previous months.
+
+### 3.3 Payment Processing Services
+
+#### 3.3.1 Domestic Payment Services
+
+**ACH Origination Fee:** The Bank charges **500 rupees per ACH file** submitted for processing. Each file may contain multiple individual transactions. 
+
+**ACH Transaction Fee:** In addition to the file origination fee, the Bank charges **2.50 rupees per individual transaction** processed within an ACH file. This fee applies to both debit and credit transactions.
+
+**RTGS Processing Fee:** For Real-Time Gross Settlement transactions exceeding INR 2,00,000, the Bank charges **50 rupees per transaction**. This fee covers RTGS submission, settlement tracking, and confirmation.
+
+**NEFT Processing Fee:** For National Electronic Funds Transfer transactions, the Bank charges **25 rupees per transaction**. 
+
+**Domestic Wire Transfer Fee:** For bank-to-bank domestic wire transfers (excluding RTGS/NEFT), the Bank charges **100 rupees per transaction**. 
+
+#### 3.3.2 International Payment Services
+
+**International Wire Transfer Fee (SWIFT):** The Bank facilitates cross-border wire transfers through the SWIFT network at a fee of **850 rupees per transaction**. This fee covers SWIFT message preparation, transmission, correspondent bank coordination, and fund settlement in the destination country.  Processing time is typically 1-3 business days.
+
+**FATCA Compliance Screening Fee:** All outbound international remittances are subject to FATCA screening. The Bank charges **75 rupees per transaction** for FATCA compliance verification, OFAC sanctions screening, and regulatory documentation. 
+
+**Correspondent Bank Charges:** Fees charged by correspondent banks for processing international transfers are passed through to the Client at actual cost plus 5% Bank handling charge, recovered separately in monthly invoices.
+
+**Currency Conversion Markup:** For international transfers involving currency conversion, the Bank applies a markup of 0.5% on the transaction amount in addition to the wire transfer fee.
+
+
+
+### 3.4 Trade Finance Services
+
+#### 3.4.1 Letters of Credit Services
+
+**LC Issuance Fee:** The Client shall pay **15000 rupees per Letter of Credit** issued by the Bank. This fee applies to LCs with validity up to 180 days from the date of issuance and covers:
+- Preparation and drafting of LC document
+- Initial verification of transaction terms and beneficiary details
+- SWIFT transmission of LC to advising/confirming bank
+- Documentation management and record-keeping
+- Compliance verification with RBI regulations
+
+
+
+**LC Amendment Fee:** Any modification to the terms and conditions of an existing LC, including extension of validity, increase/decrease of amount, or change of beneficiary/payment terms, shall incur a fee of **5000 rupees per amendment request**. 
+
+**LC Negotiation Fee:** Processing and negotiation of documents under LC (including review of shipping documents, invoices, bills of exchange, insurance certificates, and other required documents), shall be charged at **3500 rupees per document set**. This includes examination of documents for compliance with LC terms.
+
+**LC Discrepancy Fee:** If documents presented under an LC are found to be discrepant with the LC terms and conditions, the Bank shall charge **2500 rupees per LC** for managing the discrepancy, which includes seeking Client approval, communicating with issuing bank, and arranging for settlement of discrepancies.
+
+#### 3.4.2 Bank Guarantee Services
+
+**Performance Guarantee Issuance Fee:** The Client shall pay **12500 rupees per guarantee** for one-year tenor. For guarantees exceeding one year, an additional fee of **2500 rupees per additional year** shall apply. 
+
+**Bid Bond/Tender Guarantee Fee:** For bid bonds and tender guarantees issued for tender participation, the Bank charges **10000 rupees per guarantee** (one-year tenor).
+
+**Financial Guarantee (Advance Payment) Fee:** For financial guarantees securing advance payments, the Bank charges **12500 rupees per guarantee** (one-year tenor).
+
+**Guarantee Amendment Fee:** Any modification to guarantee terms, including extension of tenor, increase/decrease of amount, or change of beneficiary, shall incur **3000 rupees per amendment request**.
+
+**Guarantee Cancellation/Release Fee:** For early cancellation or release of a guarantee before the scheduled expiry date, the Bank charges **2000 rupees per request**.
+
+### 3.5 Online Services and Digital Banking
+
+**Online Banking Portal Access Fee:** The Bank charges a monthly fee of **1000 rupees** for 24/7 access to the secure online banking portal.  This fee includes:
+- Unlimited transaction initiation and approval
+- Real-time reporting and transaction status tracking
+- Account reconciliation tools and utilities
+- Download capability for statements and reports
+- Mobile banking access (iOS and Android apps)
+- Two-factor authentication and security features
+
+**Sweep Account Management Fee:** For clients utilizing automated liquidity management through sweep accounts, the Bank charges **3500 rupees per month**.  This includes:
+- Daily automated fund transfers based on pre-defined thresholds
+- Liquidity optimization and interest rate management
+- Daily monitoring and reporting of sweep activities
+- Adjustment of sweep parameters as requested
+
+**API Integration Setup Fee:** For clients requiring direct system-to-system connectivity via API (Application Programming Interface), the Bank charges **25000 rupees as a one-time setup fee**. {api_custom_terms} This covers:
+- API development and configuration
+- System integration testing and certification
+- Security validation and compliance certification
+- Initial training and documentation provision
+- 30-day post-implementation support
+
+**Management Information System (MIS) Reports:** The Bank provides customized MIS reports and dashboards to the Client. Standard monthly MIS reporting is included in account maintenance fees. Additional customized reports shall be charged at **1500 rupees per report**. Weekly cash position reports are available at **500 rupees per week**, providing liquidity forecasting and fund positioning analysis.
+
+### 3.6 Credit Facility Charges
+
+#### 3.6.1 Interest Rates on Borrowed Funds
+
+For the Cash Credit Facility described in Section 4.1, the applicable interest rate is:
+- **Base Rate:** 8.00% per annum (as of January 2025, subject to RBI changes)
+- **Bank Spread:** 2.50% per annum
+- **Applicable Rate:** 10.50% per annum (Base Rate + Spread)
+
+For the Trade Credit Line, the applicable interest rate is:
+- **Base Rate:** 8.00% per annum
+- **Bank Spread:** 2.00% per annum
+- **Applicable Rate:** 10.00% per annum (Base Rate + Spread)
+
+Interest shall be calculated on daily basis and charged monthly on the outstanding borrowing balance. {credit_custom_terms}
+
+#### 3.6.2 Non-Interest Facility Charges
+
+In addition to interest charges, the following facility-related charges shall apply to credit facilities:
+
+- **Annual Facility Review Charge:** {facility_review_fee} rupees per annum, charged for quarterly review and renewal of credit limits and assessment of Client's financial condition
+- **Documentation/Agreement Preparation:** {documentation_fee} rupees (one-time charge), covering preparation of credit agreement, security documents, collateral documentation, and legal review
+- **Disbursement Fee:** {disbursement_fee} (calculated as a percentage of disbursed amount), charged at the time of first disbursement of the facility
+- **Facility Enhancement Charge:** {facility_enhancement_fee} rupees per request, for increasing the approved credit limit or modifying facility terms
+
+### 3.7 Fee Invoice, Payment, and Late Payment Terms
+
+**Billing and Invoice:** The Bank shall calculate all applicable fees monthly based on transactions processed and services utilized in the preceding calendar month. Fee invoices shall be issued within 5 business days of month-end, detailing all charges service-wise with transaction counts and volumes.
+
+**Payment Due Date:** Payment of all fees is due within **15 days of the invoice date**. The Client authorizes the Bank to debit fees directly from its operating account(s) maintained with the Bank without requiring further authorization for each transaction.
+
+**Late Payment Interest:** If fees remain unpaid beyond the due date specified in the invoice, the Client shall be liable to pay **interest on the overdue amount at 12% per annum** (calculated on simple interest basis) from the due date until the date of actual payment.
+
+**Billing Disputes:** Any discrepancies or disputes regarding fee invoices must be reported in writing to the Bank within 30 days of invoice date, with supporting documentation. Fee adjustments or reversals shall be processed within 10 business days of Bank's approval of the dispute claim. No interest accrues on disputed amounts pending resolution.
+
+### 3.8 Annual Fee Escalation
+
+{escalation_clause}
+
+### 3.9 Minimum Activity Requirement
+
+{minimum_activity_fee_clause}
+
+### 3.10 Volume-Based Discounts and Performance Incentives
+
+{volume_discount_clause}
+
+---
+
+## 4. CREDIT FACILITIES AND COLLATERAL
+
+### 4.1 Cash Credit Facility
+
+**Facility Details:**
+- **Sanctioned Amount:** INR 24,000,000
+- **Interest Rate:** Base Rate (8.00%) + Spread of 2.50% = **10.50% p.a.** (current as of Jan 2025)
+- **Type:** Revolving facility with quarterly review
+- **Margin Requirement:** Minimum deposit of 25% of sanctioned amount must be maintained at all times
+- **Security:** First hypothecation charge on current assets (inventory, receivables), lien on all Bank accounts
+
+**Performance-Based Interest Concession:**
+If the Client maintains an average monthly deposit balance exceeding INR 50,000,000 for a minimum of 9 months in any calendar year, the Client shall be entitled to an interest rate concession of **0.25% per annum** on borrowed funds.
+
+### 4.2 Trade Credit Line
+
+- **Type:** Non-revolving facility with tenor up to 90 days
+- **Coverage:** 80-95% of invoice value
+- **Interest Rate:** Base Rate (8.00%) + Spread of 2.00% = **10.00% p.a.**
+- **Applicable to:** Domestic and export receivables
+
+---
+
+## 5. SERVICE LEVEL AGREEMENTS (SLA) AND PERFORMANCE COMMITMENTS
+
+### 5.1 Service Availability Targets
+
+The Bank commits to the following service level targets:
+
+| Service | Target | Tolerance |
+|---------|--------|-----------|
+| Payment Processing by Next Business Day | 99.5% | <0.5% failure rate |
+| Online Banking Portal Uptime (M-F, 08:00-22:00 IST) | 99.5% | Max 0.5% downtime |
+| Daily Statement Delivery | 100% | By 10:00 AM IST |
+| Account Reconciliation Completion | 100% | Within 5 days of month-end |
+| Customer Support Response Time | 15 minutes average | Max 30 minutes |
+| Issue Resolution (Tier 1 - Operational) | 24 hours | Max 48 hours |
+| Issue Resolution (Tier 2 - Escalation) | 5 business days | Max 7 business days |
+
+### 5.2 Reporting and Monitoring
+
+The Bank shall provide the Client with monthly SLA performance reports detailing compliance with these targets, including:
+- Transaction success rates and failure analysis
+- System uptime percentage and any unplanned outages
+- Customer support response time metrics
+- Issue resolution timelines and status
+- Recommendations for service improvement
+
+### 5.3 Remedies for Service Failures
+
+If the Bank fails to meet agreed service levels for two consecutive months, the Client shall be entitled to a **service credit equal to 10% of monthly service fees** for the affected month(s). Service credits shall be automatically applied to the Client's next invoice and shall not require a separate claim.
+
+---
+
+## 6. REPRESENTATIONS, WARRANTIES, AND COVENANTS
+
+### 6.1 Bank's Representations and Warranties
+
+The Bank represents and warrants that:
+
+1. It is duly authorized to enter into this Agreement under applicable banking laws and regulations
+2. It maintains valid banking licenses from the RBI and other required regulatory authorities
+3. It shall comply with all applicable Indian banking regulations, RBI guidelines, and statutory requirements
+4. All systems and processes are maintained to ensure data security, confidentiality, and information protection in compliance with ISO 27001 standards
+5. The Bank maintains adequate capital ratios and financial stability as mandated by the RBI
+
+### 6.2 Client's Representations and Warranties
+
+The Client represents and warrants that:
+
+1. It is duly registered and validly existing under the Companies Act, 2013 (or applicable law)
+2. The signatory to this Agreement is duly authorized to bind the Client and execute financial and legal commitments
+3. All information provided to the Bank is true, accurate, complete, and not misleading
+4. The Client shall not engage in any activity prohibited by law or this Agreement
+5. The Client shall maintain all books, records, and documentation as required by Indian law
+
+### 6.3 Compliance Covenants
+
+The Client covenants to:
+
+1. Maintain complete books of accounts and records of all transactions with the Bank for at least 5 years
+2. Provide quarterly financial statements within 30 days of quarter-end
+3. Notify the Bank of any material adverse change in financial condition, business operations, or regulatory status within 10 days of such change
+4. Comply with Know Your Customer (KYC) and Anti-Money Laundering (AML) requirements as per RBI guidelines
+5. Comply with FATCA and international sanctions screening requirements for cross-border transactions
+6. Maintain minimum margin/deposit requirements as specified in Section 4
+
+---
+
+## 7. LIMITATION OF LIABILITY AND INDEMNIFICATION
+
+### 7.1 Limitation of Liability
+
+**EXCEPT FOR BREACHES OF CONFIDENTIALITY, UNAUTHORIZED FUND TRANSFERS, OR GROSS NEGLIGENCE, THE BANK'S LIABILITY FOR ANY CLAIM ARISING FROM THIS AGREEMENT SHALL BE LIMITED TO THE TOTAL FEES PAID BY THE CLIENT IN THE 12 MONTHS IMMEDIATELY PRECEDING THE CLAIM.**
+
+### 7.2 Consequential Damages Exclusion
+
+Neither party shall be liable for indirect, incidental, consequential, special, or punitive damages, including:
+- Lost profits or business opportunity
+- Loss of data or business interruption
+- Reputational harm
+- Lost revenue or opportunity costs
+Even if advised of the possibility of such damages.
+
+### 7.3 Client Indemnification
+
+The Client shall indemnify and hold harmless the Bank from:
+- Claims arising from unauthorized use of the Client's accounts or credentials
+- Losses from Client's failure to maintain confidentiality of access credentials
+- Regulatory fines or penalties due to Client's violation of applicable laws
+- Third-party claims related to the Client's business operations or use of Bank services
+
+---
+
+## 8. CONFIDENTIALITY AND DATA PROTECTION
+
+### 8.1 Confidential Information
+
+Both parties agree to maintain strict confidentiality of all proprietary information disclosed under this Agreement, including transaction details, pricing terms, internal processes, client lists, and strategic information.
+
+### 8.2 Data Protection Compliance
+
+The Bank shall comply with:
+- The Reasonable Security Practices and Procedures and Sensitive Personal Data or Information Rules, 2011
+- RBI guidelines on information security in banks (RBI Master Circular on Information Security)
+- ISO/IEC 27001:2013 Information Security Management System standards
+- SWIFT security protocols for all international transactions
+- RBI Know Your Customer (KYC) guidelines and customer data protection standards
+
+### 8.3 Data Retention and Destruction
+
+Client data shall be retained for the duration of this Agreement plus 7 additional years for regulatory compliance purposes. Upon termination, data shall be securely destroyed within 30 days unless legally required to be retained.
+
+---
+
+## 9. TERMINATION AND DISPUTE RESOLUTION
+
+### 9.1 Termination Rights
+
+Either party may terminate this Agreement under the following circumstances:
+
+**Termination for Cause:** Upon 30 days written notice if the other party materially breaches this Agreement and fails to cure the breach within 15 days of written notice.
+
+**Termination Without Cause:** Upon 90 days written notice to the other party.
+
+**Immediate Termination:** If the other party becomes insolvent, undergoes liquidation proceedings, has its banking license revoked, or is adjudged bankrupt.
+
+### 9.2 Obligations Upon Termination
+
+Upon termination of this Agreement, the Client shall:
+1. Settle all outstanding service fees and charges within 15 days
+2. Clear all outstanding borrowing balances and accrued interest
+3. Retrieve all original documents held by the Bank
+4. Authorize the Bank to wind down all payment standing orders and automated transfers
+
+The Bank shall wind down all services within 30 days of termination notice.
+
+### 9.3 Dispute Resolution Mechanism
+
+Any dispute arising from this Agreement shall be resolved as follows:
+
+**Step 1 - Escalation (15 days):** Senior officials of both parties shall meet within 15 days of written notice to attempt amicable resolution.
+
+**Step 2 - Mediation (30 days):** If unresolved, parties shall attempt mediation with a mutually agreed mediator within 30 days of escalation.
+
+**Step 3 - Arbitration:** If mediation fails, disputes shall be arbitrated under the Arbitration and Conciliation Act, 1996, with a single arbitrator chosen by mutual consent. The arbitration shall be held in Mumbai, India.
+
+### 9.4 Governing Law and Jurisdiction
+
+This Agreement shall be governed by and construed in accordance with the laws of India. The courts of Mumbai shall have exclusive jurisdiction over any legal proceedings arising from this Agreement.
+
+---
+
+## 10. AMENDMENT AND MODIFICATION
+
+### 10.1 Amendment Procedures
+
+This Agreement may be amended only by written instrument signed by authorized representatives of both parties. The Bank may unilaterally modify fees and service terms with **30 days prior written notice** to the Client.
+
+### 10.2 Precedence of Documents
+
+In case of conflict, documents shall take precedence in the following order:
+1. This executed Agreement (with current Section 3 pricing)
+2. Schedule of Charges (most recent version)
+3. RBI Master Circulars and Guidelines
+4. General Banking Practice and industry custom
+
+---
+
+## 11. GENERAL PROVISIONS
+
+### 11.1 Force Majeure
+
+Neither party shall be liable for failure to perform obligations due to circumstances beyond reasonable control, including natural disasters, pandemics, acts of government, wars, strikes, or civil unrest. The affected party shall promptly notify the other of such circumstances.
+
+### 11.2 Assignment and Successors
+
+This Agreement shall be binding upon and inure to the benefit of successors and permitted assigns. The Client may not assign rights hereunder without the Bank's prior written consent.
+
+### 11.3 Entire Agreement
+
+This Agreement constitutes the entire understanding between the parties and supersedes all prior negotiations, representations, and agreements, whether written or oral.
+
+### 11.4 Counterparts and Electronic Execution
+
+This Agreement may be executed in counterparts and by electronic means (scanned signatures, digital signatures, e-signatures). Electronic copies shall have the same legal effect as original signed copies.
+
+---
+
+## SCHEDULES ATTACHED
+
+- **Schedule A:** Service Level Agreement (SLA) Metrics and Performance Monitoring
+- **Schedule B:** Approved Signatories and Authorization Matrix
+- **Schedule C:** Standard Pricing Catalogue for Commercial Banking Services (Separate Document)
+
+---
+
+**EXECUTION SECTION**
+
+**IN WITNESS WHEREOF,** the parties have executed this Agreement as of the Effective Date.
+
+**FOR AND ON BEHALF OF ZENITH COMMERCIAL BANK PLC**
+
+_______________________________  
+Dr. Meera Gupta  
+Head, Commercial Banking Division  
+
+_______________________________  
+Date  
+
+**FOR AND ON BEHALF OF ITServices GlobalStaff Solutions**
+
+_______________________________  
+Authorized Signatory Name and Title  
+
+_______________________________  
+Date  
+
+_______________________________  
+Second Authorized Signatory Name and Title  
+
+_______________________________  
+Date  
+
+---
+
+*This Commercial Banking Services Agreement is confidential and proprietary to Zenith Commercial Bank PLC and the Client. Unauthorized reproduction or distribution is prohibited.*
+
+**Document Version:** 1.0  
+**Generated:** December 15, 2024  
+**Valid Until:** December 31, 2027

@@ -1,0 +1,45 @@
+{
+  "dataset_name": "Synthetic Contracts for Revenue Leakage Analysis",
+  "problem": "Problem 3: Extract, Normalize & Analyze Pricing Terms to Identify Revenue Leakage",
+  "generated_date": "2024-12-15T03:30:00Z",
+  "status": "COMPLETE",
+  "total_files": 20,
+  "contracts": {
+    "count": 15,
+    "format": "Markdown (.md)",
+    "average_pages": "10-12",
+    "total_pages": "150-180"
+  },
+  "leakage_scenarios": {
+    "total": 15,
+    "types": [
+      "NEGOTIATED_DISCOUNT",
+      "EXPIRED_PROMOTIONAL_RATE",
+      "VOLUME_COMMITMENT_DISCOUNT",
+      "MISSED_ESCALATION",
+      "NO_ESCALATION_CLAUSE",
+      "TIERED_PRICING_MISMATCH",
+      "HIDDEN_MULTI_YEAR_DISCOUNT",
+      "ESCALATION_CAP",
+      "SILENT_DISCOUNT_EXPIRY",
+      "CONDITIONAL_TIERED_PRICING",
+      "FREQUENCY_BASED_SURCHARGE",
+      "CONCURRENT_FEE_AMBIGUITY",
+      "ONE_TIME_FEE_AMBIGUITY",
+      "SEASONAL_MINIMUM_FEE",
+      "MANDATORY_FEE_MISAPPLICATION"
+    ]
+  },
+  "revenue_at_risk": {
+    "annual_inr": 1511356,
+    "three_year_term_inr": 4534068,
+    "currency": "INR"
+  },
+  "files": {
+    "contracts": 15,
+    "reference_documents": 1,
+    "metadata": 2,
+    "documentation": 4,
+    "manifest": 1
+  }
+}

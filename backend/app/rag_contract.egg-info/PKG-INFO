@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: rag-contract
+Version: 0.1.0
+Summary: RAG pipeline for contract intelligence
+Requires-Python: >=3.9

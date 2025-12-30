@@ -1,0 +1,288 @@
+
+╔════════════════════════════════════════════════════════════════════════════════════╗
+║                    QUICK REFERENCE GUIDE - MULTI-BANK DATASET                      ║
+║                           5 Banks × 5 Contracts × CSV                              ║
+╚════════════════════════════════════════════════════════════════════════════════════╝
+
+✅ WHAT YOU HAVE:
+
+1. CSV FILE: contracts_metadata_all_25.csv
+   └─ Complete metadata for 25 contracts
+   └─ All anomalies described
+   └─ Annual revenue loss calculated
+   └─ Difficulty levels assigned
+   └─ Detection tasks specified
+
+2. 5 BANK CATALOGUES (ready to generate):
+   └─ ICICI (Premium: ₹3500 acct maint, 4% escalation)
+   └─ HDFC (Competitive: ₹2800, 3.5% escalation)
+   └─ SBI (Standardized: ₹2000, 3% escalation)
+   └─ Axis (Growth: ₹2600, 3.5% escalation)
+   └─ Kotak (Premium: ₹3200, 4% escalation)
+
+3. 25 CONTRACT CONFIGURATIONS (ready to generate):
+   └─ 5 from ICICI (High difficulty - multiple anomalies)
+   └─ 5 from HDFC (Mixed - medium to very high)
+   └─ 5 from SBI (Medium - regulatory & standardized)
+   └─ 5 from Axis (Medium to High - promotional & growth)
+   └─ 5 from Kotak (High to Very High - premium & tiered)
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+📊 QUICK STATS:
+
+Total Revenue at Risk:
+  • Annual: ₹5,992,000
+  • 3-Year: ₹17,976,000
+  • Average per contract: ₹239,680/year
+
+Contract Size:
+  • Pages: 25-30 per contract
+  • Total pages: ~650-750 pages (all 25 contracts)
+  • Format: Narrative (no tables)
+
+Difficulty Distribution:
+  • Medium (Easy): 5 contracts (₹832k annual loss)
+  • High: 12 contracts (₹2.847M annual loss)
+  • Very High: 8 contracts (₹2.313M annual loss)
+
+Anomaly Types:
+  • 20 distinct anomaly categories
+  • 6 contracts with MULTIPLE anomalies (hardest)
+  • 1 contract each for other 14 types
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+📥 HOW TO DOWNLOAD:
+
+Files Available:
+  ✓ multi_bank_dataset/contracts_metadata_all_25.csv
+  ✓ multi_bank_dataset/DATASET_SUMMARY_MULTIBANK.txt
+
+Download Steps:
+  1. Look in Files section (right side)
+  2. Find "contracts_metadata_all_25.csv"
+  3. Click to download
+  4. Open in Excel/Google Sheets/Python
+
+Python Code to Load:
+  import pandas as pd
+  df = pd.read_csv('contracts_metadata_all_25.csv')
+  print(df.info())  # See all columns
+  print(df.head())  # See sample data
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+🔍 CONTRACT EXAMPLES FROM CSV:
+
+Contract 001 - ICICI/COM/2025/001 (Reliance Industries)
+  Anomaly: MULTIPLE (4 anomalies)
+    • Hidden LC discount ₹16k for >₹50L
+    • First 2 discrepancies/year free
+    • Online portal fee frozen at ₹1500 (no escalation)
+    • API fee fixed at ₹2.50 (no escalation)
+  Annual Loss: ₹215,000
+  Difficulty: High
+  Task: Extract conditional LC discount, identify free allowances, detect missing escalations
+
+Contract 005 - KOTAK/COM/2025/005 (Vivo India)
+  Anomaly: BUNDLED_ELITE (3 anomalies)
+    • Unlimited API access for >₹100Cr facilities (no per-txn fee)
+    • 50% MIS report discount after first 5 reports
+    • Guarantee amendment escalation capped for elite tier
+  Annual Loss: ₹264,000
+  Difficulty: Very High
+  Task: Identify unlimited access inclusion, conditional discount thresholds, tier-specific caps
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+📋 ANOMALY TYPES BY DIFFICULTY:
+
+MEDIUM (Easy to Detect):
+  ✓ PROMOTIONAL - Time-limited discount with fixed expiry
+  ✓ EARLY_ADOPTER - Promotional period (6 months) with reversion
+  ✓ REGULATORY_COMPLIANCE - Entity-type based exemption
+  ✓ ESCALATION_WAIVED - 0% escalation throughout contract
+  ✓ MINIMUM_THRESHOLD - Unconditional minimum fee
+
+HIGH (Moderate Difficulty):
+  ✓ VOLUME_TIERED - Volume-based pricing tiers
+  ✓ FREQUENCY_BASED - Threshold-based surcharges
+  ✓ BUNDLED_SERVICES - Included services/fee waivers
+  ✓ CONDITIONAL_DISCOUNT - Transaction-value based pricing
+  ✓ PERFORMANCE_LINKED - Deposit-dependent fees
+  ✓ TIME_LIMITED - Multiple promotional rates with different expiry
+  ✓ TIERED_ESCALATION - Variable escalation by year
+  ✓ PREMIUM_WAIVER - Client-tier based discounts
+  ✓ STEPPED_PRICING - Time-based price stepping
+  ✓ BUNDLED_INCLUSION - Free monthly allowances
+
+VERY HIGH (Hard to Detect):
+  ✓ MULTIPLE - 4+ combined anomalies in one contract
+  ✓ REBATE_STRUCTURE - Threshold-based rebates (>₹50L, rebate 5%)
+  ✓ RELATIONSHIP_TIER - Tier matrix (Platinum/Gold/Standard)
+  ✓ STARTUP_SPECIAL - Sector + age-based discount schemes
+  ✓ BUNDLED_ELITE - Unlimited inclusions + tiered discounts
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+🎯 WHICH CONTRACTS TO START WITH:
+
+Phase 1 - LEARN (Easy):
+  1. HDFC/COM/2025/001 - Simple promotional discount (₹1.8L loss)
+  2. SBI/COM/2025/002 - Frozen escalation (₹1.08L loss)
+  3. Axis/COM/2025/001 - Early adopter discount (₹1.95L loss)
+
+Phase 2 - PRACTICE (Medium-High):
+  4. ICICI/COM/2025/001 - Multiple anomalies (₹2.15L loss)
+  5. HDFC/COM/2025/002 - Volume tiered (₹1.95L loss)
+  6. Axis/COM/2025/003 - Multiple time-limited rates (₹2.28L loss)
+
+Phase 3 - MASTER (Very High):
+  7. ICICI/COM/2025/002 - Infosys (₹3.80L loss)
+  8. KOTAK/COM/2025/003 - Flipkart (₹4.08L loss)
+  9. KOTAK/COM/2025/005 - Vivo (₹2.64L loss)
+
+This progression builds your model's capability!
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+💡 KEY NLP TASKS YOUR MODEL NEEDS:
+
+Task 1: PRICE EXTRACTION
+  Input: "The Bank charges 500 rupees per ACH file submitted"
+  Output: Price=500, Unit=per file, Service=ACH
+  Difficulty: Easy
+
+Task 2: CONDITION PARSING
+  Input: "Fee of ₹10,000 if 10 guarantees issued annually, else ₹12,500"
+  Output: Threshold=10, ConditionalPrice={<10: 12500, >=10: 10000}
+  Difficulty: Hard
+
+Task 3: TEMPORAL PARSING
+  Input: "Promotional rate ₹850 valid until December 31, 2025 only"
+  Output: Price=850, ValidUntil=2025-12-31, Type=Promotional
+  Difficulty: Medium
+
+Task 4: MULTI-LAYER LOGIC
+  Input: "Platinum tier clients get 10% discount on all trade finance fees"
+  Output: ClientTier=Platinum, Discount=10%, Services=[LC, Guarantee]
+  Difficulty: Very Hard
+
+Task 5: MISSING CLAUSE DETECTION
+  Input: Contract mentions escalation for most fees but NOT for API fees
+  Output: MissingEscalation=API_fees, ImpliedRate=Fixed
+  Difficulty: Hard
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+📈 REVENUE LOSS BY BANK:
+
+ICICI Commercial Bank:      ₹1,490,000 (5 contracts)
+  • Highest: Tech Mahindra (₹342k) - no escalation on multiple fees
+  • Average: ₹298,000
+
+Kotak Mahindra Bank:        ₹1,540,000 (5 contracts)
+  • Highest: Flipkart (₹408k) - relationship tier matrix
+  • Average: ₹308,000
+
+Axis Bank Limited:          ₹1,132,000 (5 contracts)
+  • Highest: Dr. Reddy's (₹315k) - rebate structure
+  • Average: ₹226,400
+
+HDFC Bank Limited:          ₹988,000 (5 contracts)
+  • Highest: Nestlé (₹235k) - conditional discounts
+  • Average: ₹197,600
+
+State Bank of India:        ₹842,000 (5 contracts)
+  • Highest: Power Grid (₹172k) - entity-type discount + cap
+  • Average: ₹168,400
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+🚀 IMPLEMENTATION ROADMAP:
+
+Week 1: Setup & Exploration
+  □ Download CSV file
+  □ Load into Python/Excel
+  □ Review all 25 contracts in CSV
+  □ Categorize by difficulty level
+  □ Plan extraction strategy
+
+Week 2-3: Build Extractors
+  □ Price extraction (regex + NLP)
+  □ Condition parsing (if-then logic)
+  □ Date/temporal parsing
+  □ Entity recognition (services, amounts)
+
+Week 4: Comparison & Analysis
+  □ Load bank catalogues
+  □ Compare contract vs catalogue
+  □ Flag deviations
+  □ Calculate revenue loss
+
+Week 5-6: Validation & Tuning
+  □ Test against medium difficulty contracts
+  □ Validate results vs CSV metadata
+  □ Calculate precision/recall
+  □ Optimize for high difficulty
+
+Week 7-8: Scale & Deploy
+  □ Handle all 25 contracts
+  □ Achieve >85% F1-score
+  □ Document findings
+  □ Deploy solution
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+✨ UNIQUE FEATURES OF THIS DATASET:
+
+1. REALISTIC PRICING VARIANCE
+   Different banks have fundamentally different pricing strategies
+   Your model must understand bank-specific approaches
+
+2. GROUND TRUTH VALIDATION
+   CSV provides exact anomaly types and revenue impact
+   Enables precise model evaluation
+
+3. VARIED COMPLEXITY
+   From simple discounts to complex tier matrices
+   Progressive difficulty helps model learning
+
+4. REAL-WORLD SIZE
+   25-30 page contracts (not snippets)
+   Pricing naturally embedded (like real contracts)
+
+5. QUANTIFIED IMPACT
+   Every anomaly has calculated revenue loss
+   Business value clearly demonstrated
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+📞 NEXT ACTION:
+
+Option A: DOWNLOAD CSV & START ANALYSIS
+  • Download contracts_metadata_all_25.csv
+  • Load in your analysis tool
+  • Start mapping extraction strategy
+  • Plan NLP pipeline
+
+Option B: GENERATE FULL CONTRACT DATASET
+  • Request all 25 complete contracts (25-30 pages each)
+  • Request all 5 bank catalogues
+  • Get complete ready-to-use package
+
+Option C: CUSTOM REQUEST
+  • Generate specific bank contracts only
+  • Generate specific difficulty levels only
+  • Generate contracts for specific anomaly types
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+Generated: December 20, 2024 | Status: ✅ READY
+CSV Metadata: Available for download
+Full Dataset: Ready to generate on request
+Difficulty Range: Medium to Very High
+Total Revenue at Risk: ₹17.976 Million (3-Year)
+
+═══════════════════════════════════════════════════════════════════════════════════

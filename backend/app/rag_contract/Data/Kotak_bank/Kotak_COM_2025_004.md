@@ -1,0 +1,418 @@
+# COMMERCIAL BANKING SERVICES AGREEMENT
+
+**Agreement ID:** Kotak/COM/2025/004
+**Bank:** Kotak Mahindra Bank Limited
+**Client:** Ola Electric Mobility Private Limited
+**Registration:** CIN: U45205TN2017PTC121167
+**Effective Date:** January 21, 2025
+**Expiry Date:** January 21, 2027
+**Duration:** 2 Year(s)
+**Total Pages:** 26-28
+
+---
+
+## PARTIES AND AGREEMENT OVERVIEW
+
+**BANK:** Kotak Mahindra Bank Limited Limited, Mumbai, India (Licensed by Reserve Bank of India)
+
+**CLIENT:** Ola Electric Mobility Private Limited, Chennai, India (Registration: CIN: U45205TN2017PTC121167)
+
+This Commercial Banking Services Agreement ("Agreement") establishes comprehensive banking relationship between the Bank and Client covering deposit accounts, payment processing, international transfers, trade finance, and working capital facilities.
+
+---
+
+## 1. INTRODUCTION AND BANKING RELATIONSHIP FRAMEWORK
+
+### 1.1 Nature of Agreement and Scope of Services
+
+This binding legal contract governs all banking transactions and services provided by Kotak Mahindra Bank Limited to Ola Electric Mobility Private Limited including but not limited to:
+
+**Cash Management Services:**
+- Current deposit accounts with unlimited transaction capability
+- Daily account statements with transaction-level detail
+- Monthly reconciliation reports for accounting and audit purposes
+- Multi-account consolidated reporting for treasury management
+- Custom MIS reports for business intelligence and analysis
+
+**Domestic Payment Processing:**
+- Automated Clearing House (ACH) transactions for bulk payments including payroll, vendor payments, customer refunds
+- Real-Time Gross Settlement (RTGS) for large-value urgent transfers exceeding INR 2,00,000
+- National Electronic Funds Transfer (NEFT) for standard-value transfers up to INR 10,00,000
+- Cheque processing and clearing through clearing house network
+- Standing instruction setup and automatic execution for recurring payments
+
+**International Payment Services:**
+- SWIFT wire transfers to 200+ countries worldwide
+- Cross-border fund transfers with currency conversion
+- FATCA compliance screening for all international remittances
+- Correspondent bank coordination for destination country settlement
+- Recovery of correspondent bank charges from Client
+
+**Trade Finance Facilities:**
+- Letter of Credit (LC) issuance, amendment, and negotiation
+- Bank Guarantee issuance for performance, tender, and financial guarantees
+- Documentary credit services under UCP 600 standards
+- Discrepancy handling and document examination services
+
+**Digital Banking Infrastructure:**
+- 24/7 secure online banking portal with two-factor authentication
+- Mobile banking applications for iOS and Android devices
+- API integration for direct system-to-system connectivity
+- Automated sweep account management for liquidity optimization
+- Customized dashboard and reporting functionality
+
+**Working Capital Financing:**
+- Cash Credit Facility for short-term working capital
+- Trade Credit Line for invoice-based financing  
+- Overdraft Facility for temporary liquidity management
+
+### 1.2 Regulatory Compliance Framework
+
+This Agreement is governed by the laws of India with compliance to:
+- Banking Regulation Act, 1949
+- Reserve Bank of India regulations and guidelines
+- Know Your Customer (KYC) norms and Anti-Money Laundering (AML) standards
+- Foreign Exchange Management Act for international transactions
+- Prevention of Money Laundering Act (PMLA) requirements
+- Information security guidelines for data protection
+
+---
+
+## 2. DETAILED SERVICE SPECIFICATIONS AND OPERATIONAL PROCEDURES
+
+### 2.1 Deposit Account Services and Cash Management
+
+The Bank maintains separate current accounts for Ola Electric Mobility Private Limited in the core banking system with unique account numbers. Each account operates independently with separate transaction recording, balance maintenance, and statement generation.
+
+**Daily Operations:** Cash deposits are credited same-day if submitted before 2:00 PM. Cheque deposits clear within 2 business days (local) or 3-5 business days (outstation). Electronic transfers via NEFT, RTGS, or IMPS credit within minutes to a few hours. Withdrawals are processed through cheques, cash, or electronic transfers within normal operating parameters.
+
+**Statement Generation:** Daily account statements are generated within Bank's core banking system showing opening balance, complete transaction listing with details, closing balance, and available balance. Statements are uploaded to online portal before 10:00 AM each banking day and available in PDF and Excel formats.
+
+**Reconciliation and Reporting:** Monthly reconciliation reports are generated within five business days of month-end reconciling all transactions, matching opening balance with prior month closing balance, matching debits and credits with source documents, calculating net cash flows, and reconciling to closing balance.
+
+### 2.2 Domestic Payment Processing Services
+
+**ACH Processing:** Ola Electric Mobility Private Limited submits ACH file containing payment instructions in prescribed format (.NACH or CSV) with beneficiary details. The Bank validates the file, verifies IFSC codes, checks for duplicates, and submits to RBI ACH. Transactions settle through clearing house with settlement confirmation provided.
+
+**RTGS Processing:** For transactions exceeding INR 2,00,000, Ola Electric Mobility Private Limited initiates RTGS through online portal or branch. The Bank validates beneficiary details, prepares RTGS message, submits to RBI RTGS system for real-time settlement with confirmation within 5-10 minutes.
+
+**NEFT Processing:** For amounts up to INR 10,00,000, transactions are batched and submitted to NEFT processing with settlement within 30 minutes to 2 hours.
+
+**Cheque Processing:** Cheques are collected from payees, submitted to clearing house, cleared through RBI system, with funds debited from account when cleared. Settlement typically occurs 2 business days after cheque submission.
+
+**Standing Instructions:** Ola Electric Mobility Private Limited authorizes recurring payments to beneficiaries on predetermined dates. Bank automatically initiates payments on scheduled dates without requiring separate authorization for each transaction.
+
+### 2.3 International Payment Services and Cross-Border Transfers
+
+**SWIFT Wire Transfers:** Ola Electric Mobility Private Limited provides remittance details including beneficiary name, SWIFT code, account number, amount, and currency. Bank verifies details for FATCA compliance, prepares SWIFT message in MT103 format, transmits through SWIFT network, and provides settlement confirmation.
+
+**FATCA Compliance:** Bank conducts FATCA screening by cross-referencing beneficiary against OFAC sanctions lists, verifying tax residency status, and maintaining compliance documentation.
+
+**Currency Conversion:** For international payments requiring currency conversion from INR to foreign currency, Bank applies published daily exchange rate with markup as specified in pricing schedule.
+
+**Correspondent Charges:** Bank recovers charges levied by correspondent banks in destination countries, either deducting from remittance amount or charging separately based on Ola Electric Mobility Private Limited's instruction.
+
+### 2.4 Trade Finance Services and Documentary Credits
+
+**Letter of Credit Issuance:** Ola Electric Mobility Private Limited applies for LC with beneficiary, amount, validity, and required documents. Bank verifies creditworthiness, prepares LC document in UCP 600 format, and transmits via SWIFT to advising bank.
+
+**LC Amendment:** If Ola Electric Mobility Private Limited requests LC amendment during validity (increasing amount, extending validity, modifying documents), Bank prepares amendment document and transmits via SWIFT MT707 to advising bank.
+
+**Document Negotiation:** When beneficiary presents documents under LC (shipping documents, invoices, certificates), Bank examines for compliance, verifies all required documents are present, checks content matches LC requirements, and negotiates documents accordingly.
+
+**Bank Guarantee Issuance:** Ola Electric Mobility Private Limited applies for guarantee with type, amount, validity, and claim conditions. Bank verifies creditworthiness, prepares guarantee in standard format, and transmits to beneficiary.
+
+### 2.5 Digital Banking and Technology Services
+
+**Online Portal Access:** Bank provides secure online portal available 24/7 via web browser and mobile applications. Access requires authentication through username/password and two-factor authentication via SMS or authenticator apps.
+
+**API Integration:** Bank provides RESTful API integration enabling Ola Electric Mobility Private Limited's ERP or treasury system to directly submit transactions. API uses OAuth 2.0 authentication, TLS 1.2+ encryption, and webhook callbacks for real-time status updates.
+
+**Sweep Account Management:** Bank provides automated liquidity optimization with daily monitoring of current account balance against Ola Electric Mobility Private Limited's defined thresholds, automatic sweep-in to term deposits for interest earning, and automatic sweep-out when funds needed.
+
+---
+
+## 3. COMPREHENSIVE PRICING AND FEE STRUCTURE
+
+### 3.1 General Pricing Policy
+
+All fees are in Indian Rupees exclusive of 18% GST. Fees are calculated monthly based on services utilized and transactions processed during preceding calendar month (1st-last day). Fee invoices are issued within five business days of month-end.
+
+### 3.2 Cash Management Service Charges
+
+| Service | Fee |
+|---------|-----|
+| Account Maintenance (Monthly) | ₹3,500 |
+| Daily Statement (Email) | ₹250 per statement |
+| Monthly Reconciliation | ₹1,200 per report |
+| Custom MIS Reports | ₹2,000 per report |
+| Cash Deposit | ₹5 per ₹1,000 (min ₹100) |
+| Cheque Deposit | ₹25 per cheque |
+
+### 3.3 Domestic Payment Processing Charges
+
+| Service | Fee |
+|---------|-----|
+| ACH File Origination | ₹650 per file |
+| ACH Transaction | ₹3.50 per transaction |
+| RTGS Transaction | ₹75 per transaction |
+| NEFT Transaction | ₹35 per transaction |
+| Cheque Clearing | ₹45 per cheque |
+| Standing Instruction Setup | ₹500 (one-time) |
+| Standing Instruction Monthly | ₹500 per month |
+
+**ANOMALIES EMBEDDED IN PRICING:**
+- For Ola Electric Mobility Private Limited, LC issuance fee REDUCED to ₹16,000 (from ₹18,000) for LCs exceeding ₹50 Lakhs
+- First 2 discrepancy corrections per calendar year are PROVIDED FREE
+- Online portal fee FROZEN at ₹1,500 with NO annual escalation for contract term
+- API transaction fee FIXED at ₹2.50 without annual escalation
+
+### 3.4 International Payment Charges
+
+| Service | Fee |
+|---------|-----|
+| SWIFT Wire Transfer | ₹950 per transaction |
+| FATCA Screening | ₹100 per transaction |
+| FX Conversion | 0.75% markup on spot rate |
+| Correspondent Charges | Actual + 8% handling |
+
+### 3.5 Trade Finance Service Charges
+
+| Service | Fee |
+|---------|-----|
+| LC Issuance (up to 180 days) | ₹18,000 |
+| LC Amendment | ₹6,500 per amendment |
+| LC Negotiation | ₹4,500 per document set |
+| LC Discrepancy Handling | ₹5,000 per LC |
+| Bank Guarantee (1-year) | ₹14,500 |
+| Additional Guarantee Year | ₹3,000 per year |
+| Guarantee Amendment | ₹3,500 per amendment |
+
+### 3.6 Digital Services Charges
+
+| Service | Fee |
+|---------|-----|
+| Online Portal Access | ₹1,500 per month |
+| Sweep Account Management | ₹3,500 per month |
+| API Setup (One-time) | ₹35,000 |
+| API Transaction Fee | ₹2.50 per transaction |
+| Custom MIS Reports | ₹2,000 per report |
+
+### 3.7 Fee Payment Terms
+
+All fees are due within 15 days of invoice date. Bank is authorized to auto-debit fees from Ola Electric Mobility Private Limited's primary operating account without separate authorization for each debit.
+
+**Late Payment Interest:** If fees remain unpaid 15 days after invoice date, Ola Electric Mobility Private Limited pays late payment interest at 12.0% per annum calculated daily from due date to payment date.
+
+**Dispute Resolution:** Disputes regarding fees must be reported in writing within 30 days of invoice date. Bank investigates and resolves within 10 business days. Fee adjustments approved by Bank are applied to next monthly invoice.
+
+### 3.8 Annual Fee Escalation
+
+All fees subject to automatic annual escalation of 4.0% effective January 1 each year commencing 2026, except where specifically noted as fixed or frozen in pricing schedule.
+
+---
+
+## 4. CREDIT FACILITIES AND WORKING CAPITAL FINANCING
+
+### 4.1 Cash Credit Facility
+
+**Sanctioned Limit:** ₹15 Crore subject to quarterly review and annual renewal
+
+**Interest Rate:** Base Rate (8.00%) + Spread (2.50%) = 10.50% per annum
+
+**Interest Calculation:** Daily balance method with monthly charging to account
+
+**Annual Review Fee:** ₹10,000 charged on anniversary date of facility inception
+
+**Purpose:** Short-term working capital financing with replenishment through operating cash flows
+
+### 4.2 Trade Credit Line  
+
+**Coverage:** Up to 80-95% of invoice face value depending on buyer creditworthiness
+
+**Interest Rate:** Base Rate (8.00%) + Spread (2.00%) = 10.00% per annum
+
+**Purpose:** Invoice-based financing for confirmed purchase orders
+
+### 4.3 Overdraft Facility
+
+**Interest Rate:** 11.50% per annum on daily overdrawn balance
+
+**Minimum Monthly Fee:** ₹5,000 even if facility not utilized
+
+**Purpose:** Temporary liquidity management during seasonal peaks
+
+---
+
+## 5. SERVICE LEVEL AGREEMENTS AND PERFORMANCE STANDARDS
+
+### 5.1 Bank's Service Commitments
+
+- **Portal Availability:** 99.5% uptime measured monthly (excluding scheduled maintenance)
+- **Payment Success Rate:** 99.5% of properly submitted transactions processed successfully  
+- **Daily Statements:** Delivered before 10:00 AM IST each banking day
+- **Monthly Reports:** Delivered within 5 business days of month-end
+- **Customer Service:** Response within 24 hours with 75% first-contact resolution
+
+### 5.2 Service Credit Remedies
+
+If Bank fails to meet SLA metrics for two consecutive calendar months, Ola Electric Mobility Private Limited is entitled to service credit equal to 10% of total monthly service fees (account maintenance + portal + sweep fees). Service credits automatically applied to next invoice without requiring claim.
+
+---
+
+## 6. REPRESENTATIONS, WARRANTIES, AND COMPLIANCE OBLIGATIONS
+
+### 6.1 Bank's Representations
+
+Bank represents and warrants that it is:
+- Duly licensed by Reserve Bank of India to conduct banking business
+- Maintaining capital adequacy and liquidity ratios per RBI requirements
+- Operating information security systems compliant with international standards
+- Maintaining strict confidentiality of Ola Electric Mobility Private Limited information
+
+### 6.2 Client's Representations
+
+Ola Electric Mobility Private Limited represents and warrants that it is:
+- Duly registered and validly existing under applicable corporate laws
+- All signatories authorized by Board of Directors
+- All information provided accurate and complete
+- Will not engage in prohibited activities including money laundering or sanctions violations
+- Will maintain required records for seven years
+
+### 6.3 Ongoing Compliance Requirements
+
+Ola Electric Mobility Private Limited shall:
+- Provide complete KYC documentation per RBI guidelines
+- Submit updated annual financial statements within 90 days of year-end
+- Notify Bank within 10 days of material adverse changes
+- Comply with FATCA and international sanctions screening for cross-border transactions
+- Maintain minimum margin/collateral for credit facilities and guarantees
+
+---
+
+## 7. LIABILITY LIMITATIONS AND INDEMNIFICATION
+
+### 7.1 Mutual Limitation of Liability
+
+Except for breaches of confidentiality, unauthorized fund transfers due to Bank negligence, or willful misconduct, Bank's total cumulative liability for all claims arising from this Agreement is limited to total fees paid by Ola Electric Mobility Private Limited during the 12 months preceding the claim.
+
+Neither party liable for indirect, consequential, incidental, or punitive damages including lost profits, lost business opportunities, business interruption, or reputational harm.
+
+### 7.2 Client Indemnification
+
+Ola Electric Mobility Private Limited shall indemnify and hold harmless Bank from claims arising from:
+- Unauthorized use of bank accounts or online credentials
+- Client's breach of representations, warranties, or covenants
+- Client's violation of applicable laws or regulations
+- Third-party claims related to Ola Electric Mobility Private Limited's business operations
+- Client's unauthorized use of online portal or API integration
+
+---
+
+## 8. CONFIDENTIALITY AND DATA PROTECTION
+
+### 8.1 Mutual Confidentiality
+
+Both parties maintain strict confidentiality of proprietary information disclosed during banking relationship including transaction details, pricing terms, credit facility terms, and business information. Confidentiality obligations survive termination for 3 years.
+
+### 8.2 Information Security Standards
+
+Bank complies with RBI information security guidelines, maintains ISO/IEC 27001 certification, implements TLS 1.2+ encryption for data in transit, AES-256 encryption for data at rest, restricts access to authorized employees only, conducts regular security audits, and maintains cyber liability insurance.
+
+---
+
+## 9. AGREEMENT TERMINATION AND DISPUTE RESOLUTION
+
+### 9.1 Termination Rights
+
+**Without Cause:** Either party may terminate with 90 days advance written notice. Upon termination, both parties cooperate for orderly transition including settlement of outstanding transactions, repayment of credit facilities, cancellation of guarantees and LCs, return of banking instruments, and final reconciliation.
+
+**Immediate Termination:** Bank may terminate immediately if:
+- Ola Electric Mobility Private Limited becomes insolvent or enters bankruptcy proceedings
+- Material breach not cured within 30 days of written notice
+- Violation of regulatory requirements (KYC, AML, FATCA, sanctions)
+- Engagement in fraudulent activities or prohibited activities
+
+### 9.2 Dispute Resolution
+
+**Negotiation:** Parties first attempt resolution through good faith negotiations between senior officials within 10 days of dispute notice.
+
+**Mediation:** If not resolved within 15 days, parties attempt mediation before mutually agreed mediator. Mediation conducted in Mumbai in English language for maximum 30 days.
+
+**Arbitration:** If mediation fails within 30 days, either party may proceed to binding arbitration. Sole arbitrator mutually appointed or appointed by Chairman of Indian Banks' Association. Seat in Mumbai, language English. Arbitrator's award final and binding.
+
+---
+
+## 10. AMENDMENTS, FORCE MAJEURE, AND GENERAL PROVISIONS
+
+### 10.1 Amendment Procedures
+
+Agreement amended only by written instrument signed by authorized representatives. Bank may unilaterally modify with 30 days notice:
+- Fee schedules and pricing
+- Introduction of new services
+- Discontinuance of unused services  
+- SLA targets for technology improvements
+- Operational procedures and processing timelines
+
+### 10.2 Force Majeure
+
+Neither party liable for failure to perform due to Force Majeure events (earthquakes, floods, cyclones, pandemics, wars, terrorism, strikes, infrastructure failures). Affected party notifies other party of occurrence and expected duration. Obligations resume when Force Majeure ends.
+
+### 10.3 Counterparts and Electronic Execution
+
+Agreement may be executed in multiple counterparts, each deemed original. Agreement may be executed electronically (PDF scans, digital signatures, e-signatures) with same legal force as original paper documents.
+
+### 10.4 Entire Agreement and Severability
+
+Agreement with all schedules and annexures constitutes entire agreement and supersedes all prior negotiations and agreements. If any provision invalid or unenforceable, remaining provisions continue in full force and effect.
+
+---
+
+## SCHEDULES AND ATTACHMENTS
+
+**Schedule A:** Bank Pricing Catalogue - Master fee list and service charges
+
+**Schedule B:** Approved Signatories and Authorization Matrix - Client representatives authorized to operate accounts
+
+**Schedule C:** Service Level Agreement Metrics - Detailed SLA parameters and measurement methodology
+
+**Schedule D:** SWIFT Codes and Correspondent Bank Details - Bank connectivity and relationships
+
+**Schedule E:** Data Protection and Information Security Policy - Security procedures and data handling
+
+**Schedule F:** Dispute Resolution Escalation Matrix - Contact details and escalation procedures
+
+---
+
+## EXECUTION
+
+**IN WITNESS WHEREOF**, the parties execute this Agreement as of January 21, 2025:
+
+**FOR Kotak Mahindra Bank Limited:**
+
+Signature: _________________________ | Date: January 21, 2025  
+Name: [Bank Official]  
+Designation: [Title]
+
+**FOR Ola Electric Mobility Private Limited:**
+
+Signature: _________________________ | Date: January 21, 2025  
+Name: [Client Authorized Signatory]  
+Designation: [Title]
+
+---
+
+**Agreement Details:**
+- Agreement ID: Kotak/COM/2025/004
+- Bank: Kotak Mahindra Bank Limited
+- Client: Ola Electric Mobility Private Limited
+- Effective: January 21, 2025
+- Duration: 2 Year(s)
+- Pages: 26-28
+- Status: EXECUTION READY
+- Generated: December 25, 2025
+
+---
+
+*Confidential - Authorized Distribution Only*
+*© Kotak Mahindra Bank Limited Limited - All Rights Reserved*

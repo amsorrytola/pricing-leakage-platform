@@ -1,0 +1,121 @@
+{
+    "Account Maintenance": {
+        "unit": "per_month",
+        "price": 2500,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Monthly Reconciliation Report": {
+        "unit": "per_month",
+        "price": 750,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Consolidated Reporting": {
+        "unit": "per_month",
+        "price": 1250,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "ACH Origination Fee": {
+        "unit": "per_file",
+        "price": 500,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "ACH Transaction Fee": {
+        "unit": "per_transaction",
+        "price": 2.5,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "RTGS Processing": {
+        "unit": "per_transaction",
+        "price": 50,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "NEFT Processing": {
+        "unit": "per_transaction",
+        "price": 25,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Domestic Wire Transfer": {
+        "unit": "per_transaction",
+        "price": 100,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "International Wire Transfer": {
+        "unit": "per_transaction",
+        "price": 850,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "FATCA Compliance Screening": {
+        "unit": "per_transaction",
+        "price": 75,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Currency Conversion": {
+        "unit": "percentage",
+        "price": 0.5,
+        "currency": "PERCENT",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Annual Facility Review Charge": {
+        "unit": "per_annum",
+        "price": 5000,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Documentation/Agreement Preparation": {
+        "unit": "one_time",
+        "price": 10000,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": null
+    },
+    "Disbursement Fee": {
+        "unit": "percentage",
+        "price": 0.25,
+        "currency": "PERCENT",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Facility Enhancement": {
+        "unit": "per_request",
+        "price": 3000,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "Online Banking Portal Access": {
+        "unit": "per_month",
+        "price": 1000,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": 3.5
+    },
+    "API Integration Setup": {
+        "unit": "one_time",
+        "price": 25000,
+        "currency": "INR",
+        "minimum_fee": null,
+        "escalation_rate": null
+    }
+}
