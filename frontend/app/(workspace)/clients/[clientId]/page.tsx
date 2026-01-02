@@ -77,9 +77,42 @@ export default function ClientContractsPage() {
 
             <Link
               href={`/contracts/${c.id}`}
-              className="text-blue-600 hover:underline text-sm"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 hover:text-blue-700 transition-all"
             >
-              View Details →
+              View Contract Details
+              <svg
+                className="h-4 w-4 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+
+            <Link
+              href={`/contracts/${c.id}/revenue-analysis`}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 hover:text-blue-700 transition-all"
+            >
+              Revenue Analysis
+              <svg
+                className="h-4 w-4 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
           </div>
         ))}

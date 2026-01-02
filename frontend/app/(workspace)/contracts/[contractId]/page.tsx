@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { fetchContractText, normalizeContract, detectLeakage } from "@/lib/api";
+import { fetchContractText, normalizeContract } from "@/lib/api";
+import ServiceLogCard from "@/components/ServiceLogCard";
 
 const SERVICE_MASTER_HINT: Record<string, string> = {
   ACH_TXN: "per transaction",
@@ -20,10 +21,7 @@ export default function ContractPage() {
 
   const [text, setText] = useState("");
   const [normalized, setNormalized] = useState<any>(null);
-  const [findings, setFindings] = useState<any[]>([]);
   const [services, setServices] = useState<string[]>([]);
-  const [volumes, setVolumes] = useState<Record<string, number>>({});
-  const [billingPeriod, setBillingPeriod] = useState("2024-11");
   const [loadingServices, setLoadingServices] = useState(false);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [contractMetadata, setContractMetadata] = useState<any>(null);
@@ -83,73 +81,9 @@ export default function ContractPage() {
     if (contractId) loadNormalized();
   }, [contractId]);
 
-  useEffect(() => {
-    async function loadServices() {
-      if (!normalized) return;
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/${contractId}/billable-services`
-      ).then((r) => r.json());
 
-      setServices(res.services || []);
-    }
 
-    loadServices();
-  }, [normalized, contractId]);
-
-  useEffect(() => {
-    async function loadLeakage() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/leakage/${contractId}`
-      ).then((r) => r.json());
-
-      if (res.analyzed) {
-        setFindings(res.findings);
-      }
-    }
-
-    if (contractId) loadLeakage();
-  }, [contractId]);
-
-  useEffect(() => {
-    async function loadVolumes() {
-      if (!contractId || !billingPeriod) return;
-      if (services.length === 0) return;
-
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/volume/by-contract?` +
-          new URLSearchParams({
-            contract_id: contractId,
-            billing_period: billingPeriod,
-          })
-      ).then((r) => r.json());
-
-      if (!res.volumes) return;
-
-      const initialVolumes: Record<string, number> = {};
-      for (const v of res.volumes) {
-        initialVolumes[v.service_code] = v.volume;
-      }
-
-      setVolumes(initialVolumes);
-    }
-
-    loadVolumes();
-  }, [contractId, billingPeriod, services]);
-
-  useEffect(() => {
-    async function loadPeriods() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/volume/periods?contract_id=${contractId}`
-      ).then((r) => r.json());
-
-      if (res.periods?.length) {
-        setBillingPeriod(res.periods[0]);
-      }
-    }
-
-    if (contractId) loadPeriods();
-  }, [contractId]);
 
   async function handleNormalize() {
     const res = await normalizeContract(contractId);
@@ -163,34 +97,7 @@ export default function ContractPage() {
     setLoadingServices(false);
   }
 
-  async function handleLeakage() {
-    const res = await detectLeakage(contractId);
-    setFindings(res.findings);
-  }
 
-  async function submitVolume() {
-    const payload = {
-      contract_id: contractId,
-      billing_period: billingPeriod,
-      volumes: Object.entries(volumes).map(([service_code, volume]) => ({
-        service_code,
-        volume,
-      })),
-    };
-
-    if (!payload.volumes.length) {
-      alert("Enter at least one volume");
-      return;
-    }
-
-    await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/volume/submit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    alert("Volume saved");
-  }
 
   async function sendChat() {
     setChatLoading(true);
@@ -381,145 +288,12 @@ export default function ContractPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-red-200 bg-white shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-red-200 bg-gradient-to-r from-red-50 to-orange-50">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center shadow-sm">
-                <svg
-                  className="h-4 w-4 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-base font-semibold text-slate-900">
-                  Revenue Leakage
-                </h2>
-                <p className="text-xs text-slate-500">
-                  Detect pricing deviations
-                </p>
-              </div>
-            </div>
-          </div>
+        <ServiceLogCard contractId={contractId} />
 
-          <div className="p-6 space-y-4">
-            <button
-              onClick={handleLeakage}
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-red-600 to-orange-600 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
-              </svg>
-              Run Leakage Analysis
-            </button>
 
-            {findings.length > 0 && (
-              <div className="space-y-2">
-                {findings.map((f, i) => (
-                  <div
-                    key={i}
-                    className="p-3 rounded-lg border border-red-200 bg-red-50"
-                  >
-                    <div className="font-semibold text-sm text-red-900 mb-1">
-                      {f.type}
-                    </div>
-                    <div className="text-xs text-red-700 mb-2">{f.message}</div>
-                    <div className="text-xs text-red-600 italic">
-                      {f.explanation}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+        
 
-        {normalized && services.length > 0 && (
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center shadow-sm">
-                  <svg
-                    className="h-4 w-4 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-base font-semibold text-slate-900">
-                    Volume Report
-                  </h2>
-                  <p className="text-xs text-slate-500">
-                    Transaction volumes by service
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 space-y-4 text-slate-900">
-              <input
-                value={billingPeriod}
-                onChange={(e) => setBillingPeriod(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm "
-                placeholder="YYYY-MM"
-              />
-
-              <div className="space-y-2">
-                {services.map((code) => (
-                  <div key={code} className="flex items-center gap-2">
-                    <div className="flex-1 text-xs font-mono text-slate-700">
-                      {code}
-                    </div>
-                    <input
-                      type="number"
-                      className="w-24 px-2 py-1.5 rounded border border-slate-300 text-sm"
-                      value={volumes[code] ?? ""}
-                      onChange={(e) =>
-                        setVolumes({
-                          ...volumes,
-                          [code]: Number(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={submitVolume}
-                className="w-full px-4 py-2 rounded-lg bg-green-600 text-sm font-medium text-white hover:bg-green-700 transition-colors"
-              >
-                Save Volume
-              </button>
-            </div>
-          </div>
-        )}
+        
 
         <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-indigo-50 to-purple-50">
