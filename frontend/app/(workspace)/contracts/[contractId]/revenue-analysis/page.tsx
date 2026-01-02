@@ -13,6 +13,7 @@ import {
 import SummaryHeader from "@/components/revenue/SummaryHeader";
 import LeakageByServiceChart from "@/components/revenue/LeakageByServiceChart";
 import RevenueTrendChart from "@/components/revenue/RevenueTrendChart";
+import RevenueAIInsightCard from "@/components/revenue/RevenueAIInsightCard";
 
 /* ---------------- Types ---------------- */
 
@@ -88,8 +89,6 @@ export default function RevenueAnalysisPage() {
         `${process.env.NEXT_PUBLIC_API_BASE}/api/revenue/volume-report?contract_id=${contractId}&period=${inputPeriod}`
       ).then((r) => r.json());
 
-
-
       if (!res.services || res.services.length === 0) return;
 
       // map service_code -> volume
@@ -161,11 +160,14 @@ export default function RevenueAnalysisPage() {
       {/* Summary */}
       {summary && <SummaryHeader summary={summary} />}
 
-      {/* Charts */}
+      {/* Charts Row */}
       <div className="grid grid-cols-2 gap-8">
         <LeakageByServiceChart data={byService} />
         <RevenueTrendChart data={trends} />
       </div>
+
+      {/* AI Insights Card - NEW */}
+      <RevenueAIInsightCard contractId={contractId} period={period} />
 
       {/* ---------------- Volume Report Input ---------------- */}
 
