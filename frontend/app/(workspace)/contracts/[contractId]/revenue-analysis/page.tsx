@@ -15,35 +15,30 @@ import LeakageByServiceChart from "@/components/revenue/LeakageByServiceChart";
 import RevenueTrendChart from "@/components/revenue/RevenueTrendChart";
 import RevenueAIInsightCard from "@/components/revenue/RevenueAIInsightCard";
 
-/* ---------------- Types ---------------- */
-
 type ServiceRow = {
   service_code: string;
   volume?: number;
 };
 
-/* ---------------- Page ---------------- */
-
 export default function RevenueAnalysisPage() {
   const { contractId } = useParams<{ contractId: string }>();
 
-  /* ---- READ (Analytics) ---- */
   const [period, setPeriod] = useState<string | null>(null);
   const [summary, setSummary] = useState<any>(null);
   const [byService, setByService] = useState<any[]>([]);
   const [trends, setTrends] = useState<any[]>([]);
 
-  /* ---- WRITE (Volume Input) ---- */
   const [services, setServices] = useState<ServiceRow[]>([]);
   const [inputPeriod, setInputPeriod] = useState("2025-01");
   const [saving, setSaving] = useState(false);
 
-  /* ---------------- Load Analytics ---------------- */
+  const [loadingAnalytics, setLoadingAnalytics] = useState(true);
 
   useEffect(() => {
     if (!contractId) return;
 
     async function loadAnalytics() {
+      setLoadingAnalytics(true);
       const [s, bs, t] = await Promise.all([
         getRevenueSummary(contractId, period),
         getRevenueByService(contractId, period),
@@ -53,12 +48,11 @@ export default function RevenueAnalysisPage() {
       setSummary(s);
       setByService(bs);
       setTrends(t);
+      setLoadingAnalytics(false);
     }
 
     loadAnalytics();
   }, [contractId, period]);
-
-  /* ---------------- Load Billable Services ---------------- */
 
   useEffect(() => {
     if (!contractId) return;
@@ -79,8 +73,6 @@ export default function RevenueAnalysisPage() {
     loadServices();
   }, [contractId]);
 
-  /* ---------------- Load Existing Volume Report ---------------- */
-
   useEffect(() => {
     if (!contractId || services.length === 0 || !inputPeriod) return;
 
@@ -91,7 +83,6 @@ export default function RevenueAnalysisPage() {
 
       if (!res.services || res.services.length === 0) return;
 
-      // map service_code -> volume
       const volumeMap = new Map<string, number>();
       res.services.forEach((s: any) => {
         volumeMap.set(s.service_code, s.volume);
@@ -107,8 +98,6 @@ export default function RevenueAnalysisPage() {
 
     loadExistingVolumeReport();
   }, [contractId, inputPeriod, services.length]);
-
-  /* ---------------- Volume Handlers ---------------- */
 
   function updateVolume(index: number, value: number) {
     const copy = [...services];
@@ -141,99 +130,132 @@ export default function RevenueAnalysisPage() {
     setSaving(false);
     alert(`Volume report ${status} saved`);
 
-    // refresh analytics after submission
     setPeriod(inputPeriod);
   }
 
-  /* ---------------- UI ---------------- */
-
   return (
-    <main className="max-w-7xl mx-auto p-8 space-y-10">
-      {/* Header */}
-      <header>
-        <h1 className="text-2xl font-semibold">Revenue Analysis</h1>
-        <p className="text-sm text-gray-600">
-          Volume-based revenue impact & leakage insights
-        </p>
-      </header>
-
-      {/* Summary */}
-      {summary && <SummaryHeader summary={summary} />}
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-2 gap-8">
-        <LeakageByServiceChart data={byService} />
-        <RevenueTrendChart data={trends} />
+    <div className="space-y-8">
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Revenue Analysis</h1>
+          <p className="text-sm text-slate-600">Volume-based revenue impact and leakage intelligence</p>
+        </div>
       </div>
 
-      {/* AI Insights Card - NEW */}
-      <RevenueAIInsightCard contractId={contractId} period={period} />
+      {loadingAnalytics ? (
+        <div className="flex items-center justify-center py-16">
+          <div className="flex flex-col items-center gap-4">
+            <div className="relative">
+              <div className="h-16 w-16 rounded-full border-4 border-slate-200"></div>
+              <div className="absolute inset-0 h-16 w-16 rounded-full border-4 border-blue-600 border-t-transparent animate-spin"></div>
+            </div>
+            <p className="text-sm font-medium text-slate-600">Loading analytics...</p>
+          </div>
+        </div>
+      ) : (
+        <>
+          {summary && <SummaryHeader summary={summary} />}
 
-      {/* ---------------- Volume Report Input ---------------- */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <LeakageByServiceChart data={byService} />
+            <RevenueTrendChart data={trends} />
+          </div>
 
-      <section className="border rounded-xl p-6 space-y-4">
-        <h2 className="text-lg font-semibold">Submit Volume Report</h2>
-        <p className="text-sm text-gray-600">
-          Enter transaction volumes for this period
-        </p>
+          <RevenueAIInsightCard contractId={contractId} period={period} />
+        </>
+      )}
 
-        {/* Period */}
-        <div className="flex gap-3 items-center">
-          <label className="text-sm font-medium">Period</label>
-          <input
-            value={inputPeriod}
-            onChange={(e) => setInputPeriod(e.target.value)}
-            placeholder="YYYY-MM"
-            className="border rounded px-3 py-2 text-sm"
-          />
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-6 py-5 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-sm">
+              <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-slate-900">Submit Volume Report</h2>
+              <p className="text-sm text-slate-500">Enter transaction volumes to generate revenue impact analysis</p>
+            </div>
+          </div>
         </div>
 
-        {/* Volume Table */}
-        <div className="border rounded overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left p-3">Service</th>
-                <th className="text-right p-3">Volume</th>
-              </tr>
-            </thead>
-            <tbody>
-              {services.map((s, i) => (
-                <tr key={s.service_code} className="border-t">
-                  <td className="p-3 font-mono">{s.service_code}</td>
-                  <td className="p-3 text-right">
-                    <input
-                      type="number"
-                      className="border rounded px-2 py-1 w-32 text-right"
-                      value={s.volume ?? ""}
-                      onChange={(e) => updateVolume(i, Number(e.target.value))}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <div className="p-6 space-y-6">
+          <div className="flex items-center gap-4">
+            <label className="text-sm font-medium text-slate-700 min-w-[80px]">Period</label>
+            <input
+              value={inputPeriod}
+              onChange={(e) => setInputPeriod(e.target.value)}
+              placeholder="YYYY-MM"
+              className="px-4 py-2.5 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm text-slate-900 placeholder:text-slate-400"
+            />
+          </div>
 
-        {/* Actions */}
-        <div className="flex justify-end gap-3">
-          <button
-            onClick={() => submitVolume("draft")}
-            disabled={saving}
-            className="px-4 py-2 rounded border text-sm"
-          >
-            Save Draft
-          </button>
+          <div className="rounded-xl border border-slate-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-50 border-b border-slate-200">
+                  <tr>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-700 uppercase tracking-wide">Service Code</th>
+                    <th className="text-right px-4 py-3 text-xs font-semibold text-slate-700 uppercase tracking-wide">Volume</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {services.map((s, i) => (
+                    <tr key={s.service_code} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-4 py-3">
+                        <span className="font-mono text-sm font-medium text-slate-900">{s.service_code}</span>
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <input
+                          type="number"
+                          className="w-32 px-3 py-2 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm text-slate-900 text-right"
+                          value={s.volume ?? ""}
+                          onChange={(e) => updateVolume(i, Number(e.target.value))}
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-          <button
-            onClick={() => submitVolume("final")}
-            disabled={saving}
-            className="px-4 py-2 rounded bg-black text-white text-sm"
-          >
-            Submit Final
-          </button>
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <button
+              onClick={() => submitVolume("draft")}
+              disabled={saving}
+              className="px-5 py-2.5 rounded-lg border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Save Draft
+            </button>
+
+            <button
+              onClick={() => submitVolume("final")}
+              disabled={saving}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-sm font-semibold text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {saving ? (
+                <>
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Submit Final
+                </>
+              )}
+            </button>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
