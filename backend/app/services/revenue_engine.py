@@ -229,3 +229,32 @@ def compute_revenue_impact(contract_id: str, period: str):
     # - anomaly detection
     # - renegotiation priority scoring
 
+    # Add ai insights to revenue_ai_insights table 
+    # lets mock it for now
+
+
+    ai_insight = {
+        "contract_id": contract_id,
+        "institution_id": institution_id,
+        "client_id": client_id,
+        "billing_period": period,
+        "insight_type": "REVENUE_IMPACT_SUMMARY",
+        "title": f"Revenue Impact Analysis for {period}",
+        "summary": f"The revenue impact analysis for the period {period} has been completed. Review the detailed report for insights on leakage and gains.",
+        "recommendations": {
+            "next_steps": [
+                "Review the detailed revenue impact report.",
+                "Identify services with significant leakage.",
+                "Consider renegotiating terms for underpriced services."
+            ]
+        },
+        "supporting_data": {
+            "total_leakage": sum(r["revenue_impact"] for r in rows if r["revenue_impact"] < 0),
+            "total_gain": sum(r["revenue_impact"] for r in rows if r["revenue_impact"] > 0),
+            "net_impact": sum(r["revenue_impact"] for r in rows)
+        },
+        "severity": "warning" if any(r["revenue_impact"] < 0 for r in rows) else "info",
+        "analysis_version": "1.0"
+    }
+
+    supabase.table("revenue_ai_insights").insert(ai_insight).execute()

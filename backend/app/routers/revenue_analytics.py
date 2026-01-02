@@ -85,3 +85,22 @@ def revenue_trends(contract_id: str):
         { "period": k, "revenue_impact": v }
         for k, v in sorted(trend.items())
     ]
+
+
+
+# -----------------------------------
+# GET REVENUE AI INSIGHTS
+# -----------------------------------
+
+@router.get("/ai-insights")
+def get_revenue_ai_insights(contract_id: str):
+    rows = (
+        supabase.table("revenue_ai_insights")
+        .select("*")
+        .eq("contract_id", contract_id)
+        .order("generated_at", desc=True)
+        .execute()
+    ).data or []
+
+    return rows
+    

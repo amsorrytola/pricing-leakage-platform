@@ -1,3 +1,4 @@
+// frontend/components/revenue/SummaryHeader.tsx
 export default function SummaryHeader({ summary }: { summary: any }) {
   return (
     <div className="grid grid-cols-3 gap-6">

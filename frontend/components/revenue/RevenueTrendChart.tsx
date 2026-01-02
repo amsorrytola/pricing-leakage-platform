@@ -1,3 +1,4 @@
+// frontend/components/revenue/RevenueTrendChart.tsx
 import {
   LineChart,
   Line,

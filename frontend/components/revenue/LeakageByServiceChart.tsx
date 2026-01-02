@@ -1,3 +1,4 @@
+// frontend/components/revenue/LeakageByServiceChart.tsx
 import {
   BarChart,
   Bar,
