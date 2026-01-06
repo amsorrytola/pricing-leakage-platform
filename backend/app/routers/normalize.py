@@ -1,44 +1,114 @@
 # backend/app/routers/normalize.py
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from app.services.supabase_client import supabase
+from app.routers.service_log import generate_service_log
+
+from pypdf import PdfReader
+import io
+
+# RAG pipeline imports
+from rag_contract.ingestion.splitter import split_contract
+from rag_contract.ingestion.splitter import classify_documents
+from rag_contract.vectorstore.chroma_store import add_to_chroma
+from rag_contract.normalized_table import normalized_table_groq,normalized_table
+
 
 router = APIRouter(prefix="/api/normalize", tags=["normalize"])
 
+
+# ============================================================================
+# UTILITY: Extract text from PDF using PyPDF
+# ============================================================================
+def extract_text_from_pdf(pdf_bytes: bytes) -> str:
+    reader = PdfReader(io.BytesIO(pdf_bytes))
+    text = ""
+
+    for page in reader.pages:
+        extracted = page.extract_text() or ""
+        text += extracted + "\n"
+
+    return text
+
+
+
+# ============================================================================
+# NORMALIZE CONTRACT + INGEST INTO CHROMA
+# ============================================================================
 @router.post("/{contract_id}")
 def normalize_contract(contract_id: str):
     print("DEBUG: Normalizing contract", contract_id)
 
-    # Fetch contract metadata
+    # ------------------------------------------------------------------------
+    # 1️⃣ Fetch contract metadata
+    # ------------------------------------------------------------------------
     contract = (
         supabase
         .table("contracts")
-        .select("id, institution_id, client_id")
+        .select("id, institution_id, client_id, file_path")
         .eq("id", contract_id)
         .single()
         .execute()
     ).data
 
-    # 🔹 MOCK normalization output
-    normalized_terms = {
-        "transaction_fees": {
-            "wire_domestic_standard": 14.50,
-            "wire_domestic_rush": 22.00,
-            "wire_international_standard": 40.00
-        },
-        "volume_discounts": {
-            "tier_3_discount_pct": 12
-        },
-        "minimum_monthly_revenue": 3500,
-        "promotional_discounts": [
-            {
-                "type": "ACH",
-                "discount_pct": 20,
-                "valid_until": "2024-06-30"
-            }
-        ],
-        "grandfathered_pricing": True
-    }
+    if not contract:
+        raise HTTPException(status_code=404, detail="Contract not found")
 
+    # ------------------------------------------------------------------------
+    # 2️⃣ Generate signed PDF URL (for frontend)
+    # ------------------------------------------------------------------------
+    pdf_url = None
+    if contract.get("file_path"):
+        pdf_url = supabase.storage.from_("contracts").create_signed_url(
+            contract["file_path"],
+            60 * 60  # 1 hour
+        )["signedURL"]
+
+    # ------------------------------------------------------------------------
+    # 3️⃣ DOWNLOAD PDF + EXTRACT TEXT (PyPDF)
+    # ------------------------------------------------------------------------
+    print("DEBUG: Downloading PDF from Supabase")
+
+    pdf_bytes = supabase.storage.from_("contracts").download(
+        contract["file_path"]
+    )
+
+    text = extract_text_from_pdf(pdf_bytes)
+
+    if not text.strip():
+        raise HTTPException(
+            status_code=422,
+            detail="PDF text extraction failed (possibly scanned PDF)"
+        )
+
+    # ------------------------------------------------------------------------
+    # 4️⃣ SPLIT → CLASSIFY → STORE IN CHROMA (RAG INGESTION)
+    # ------------------------------------------------------------------------
+    print("DEBUG: Running RAG ingestion")
+
+    docs = split_contract(
+        text=text,
+        source_path=contract_id
+    )
+
+    docs = classify_documents(docs)
+
+    add_to_chroma(
+        docs
+    )
+
+    print("✅ Ingestion completed and stored in Chroma")
+
+    # ------------------------------------------------------------------------
+    # 5️⃣ MOCK NORMALIZATION OUTPUT (placeholder)
+    # ------------------------------------------------------------------------
+    normalized_terms = normalized_table_groq(contract_id)
+
+    # Generate service log AFTER normalization
+    generate_service_log(contract_id)
+
+    # ------------------------------------------------------------------------
+    # 6️⃣ STORE NORMALIZED OUTPUT
+    # ------------------------------------------------------------------------
     supabase.table("normalized_contracts").insert({
         "contract_id": contract_id,
         "institution_id": contract["institution_id"],
@@ -50,11 +120,14 @@ def normalize_contract(contract_id: str):
 
     return {
         "status": "normalized",
-        "terms": normalized_terms
+        "terms": normalized_terms,
+        "contract_pdf_url": pdf_url
     }
 
 
-
+# ============================================================================
+# GET LATEST NORMALIZED CONTRACT
+# ============================================================================
 @router.get("/{contract_id}")
 def get_normalized_contract(contract_id: str):
     result = (

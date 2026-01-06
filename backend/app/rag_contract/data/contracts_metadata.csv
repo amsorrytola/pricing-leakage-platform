@@ -1,0 +1,11 @@
+contract_id,filename,client,leakage_type,leakage_service,standard_price,contract_price
+ZCB/COM/2025/001,synthetic_contracts/ZCB_COM_2025_001.md,TechVision Industries Limited,NEGOTIATED_DISCOUNT,ACH Origination Fee,500.0,400.0
+ZCB/COM/2025/002,synthetic_contracts/ZCB_COM_2025_002.md,GlobalTrade Exporters Pvt Ltd,EXPIRED_PROMOTIONAL_RATE,International Wire Transfer Fee,850.0,750.0
+ZCB/COM/2025/003,synthetic_contracts/ZCB_COM_2025_003.md,IndiaManufacturing Solutions Pvt Ltd,VOLUME_COMMITMENT_DISCOUNT,Bank Guarantee Issuance,12500.0,10000.0
+ZCB/COM/2025/004,synthetic_contracts/ZCB_COM_2025_004.md,ConsumerGoods Trading Company Limited,MISSED_ESCALATION,Account Maintenance Fee,2500.0,2500.0
+ZCB/COM/2025/005,synthetic_contracts/ZCB_COM_2025_005.md,FinanceHub Capital Markets Limited,NO_ESCALATION_CLAUSE,Online Portal Access Fee,1000.0,1000.0
+ZCB/COM/2025/006,synthetic_contracts/ZCB_COM_2025_006.md,PharmaLogistics Distribution Network,TIERED_PRICING_MISMATCH,ACH Transaction Fees,2.5,2.5
+ZCB/COM/2025/007,synthetic_contracts/ZCB_COM_2025_007.md,AutoComponents Manufacturing Inc,HIDDEN_MULTI_YEAR_DISCOUNT,Letter of Credit Issuance,15000.0,13500.0
+ZCB/COM/2025/008,synthetic_contracts/ZCB_COM_2025_008.md,AgriTrade Export Corporation,ESCALATION_CAP,NEFT Processing Fee,25.0,25.0
+ZCB/COM/2025/009,synthetic_contracts/ZCB_COM_2025_009.md,RetailChain Hypermarkets Ltd,SILENT_DISCOUNT_EXPIRY,Sweep Account Management,3500.0,3150.0
+ZCB/COM/2025/010,synthetic_contracts/ZCB_COM_2025_010.md,EnergySector Solutions India Pvt Ltd,CONDITIONAL_TIERED_PRICING,Domestic Wire Transfer,100.0,100.0

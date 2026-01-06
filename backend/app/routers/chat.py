@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-
+from rag_contract.chit_chat import chat 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
 
@@ -21,11 +21,19 @@ def chat_with_contract(contract_id: str, payload: ChatRequest):
     # - LLM grounded response generation
     # DO NOT change the API contract.
 
-    return {
-        "reply": (
-            "This is a mock response.\n\n"
-            "In the full system, I will answer your question "
-            "using the contract clauses and pricing catalogue "
-            "with full explainability."
+    try:
+        reply = chat(
+            contract_id=contract_id,
+            query=payload.message
         )
+        print (reply)
+    except Exception as e:
+        print("❌ Chat error:", str(e))
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to generate contract response"
+        )
+
+    return {
+        "reply": reply
     }
