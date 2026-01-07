@@ -254,6 +254,39 @@ def get_billable_services(contract_id: str):
     }
 
 
+@router.get("/{institution_id}/billable-services-by-institution")
+def get_billable_services(institution_id: str):
+    """
+    Returns a flat list of billable services extracted
+    from the pricing catalogue rules.
+    """
+
+    row = (
+        supabase
+        .table("pricing_catalogues")
+        .select("rules")
+        .eq("institution_id", institution_id)
+        .single()
+        .execute()
+    ).data
+
+    rules = row.get("rules") or {}
+    pricing_categories = rules.get("pricing_categories", {})
+
+    services = []
+
+    for _, category_services in pricing_categories.items():
+        for service_id, service_data in category_services.items():
+            services.append({
+                service_id: service_data
+            })
+
+    return {
+        "institution_id": institution_id,
+        "services": services
+    }
+
+
 @router.get("/{contract_id}")
 def get_contract(contract_id: str):
     result = (

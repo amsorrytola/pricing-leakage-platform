@@ -4,12 +4,11 @@ from app.services.supabase_client import supabase
 
 router = APIRouter(prefix="/api/dashboard", tags=["dashboard"])
 
-
 @router.get("/summary")
 def dashboard_summary(institution_id: str):
     print("DEBUG: Building dashboard summary for", institution_id)
 
-    findings = (
+    rows = (
         supabase
         .table("revenue_leakage_findings")
         .select("findings, client_id")
@@ -20,18 +19,30 @@ def dashboard_summary(institution_id: str):
     total_findings = 0
     high_severity = 0
 
-    for row in findings:
+    SEVERITY_THRESHOLD = -0.2  # your rule
+
+    for row in rows:
         for f in row["findings"]:
             total_findings += 1
-            if f["severity"] == "high":
+
+            catalog_price = f.get("catalog_price")
+            contract_price = f.get("contract_price")
+
+            # Safety checks
+            if catalog_price is None or catalog_price == 0:
+                continue
+
+            ratio = (contract_price - catalog_price) / catalog_price
+
+
+            if ratio < SEVERITY_THRESHOLD:
                 high_severity += 1
 
     return {
         "total_findings": total_findings,
         "high_severity_findings": high_severity,
-        "clients_impacted": len(set(row["client_id"] for row in findings))
+        "clients_impacted": len({row["client_id"] for row in rows})
     }
-
 
 @router.get("/clients")
 def leakage_by_client(institution_id: str):

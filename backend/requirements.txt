@@ -4,3 +4,8 @@ python-dotenv
 supabase
 python-multipart
 pdfplumber
+langchain_community
+groq
+ollama
+pypdf
+openai
