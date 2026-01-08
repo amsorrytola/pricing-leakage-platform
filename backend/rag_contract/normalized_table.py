@@ -83,9 +83,6 @@ from groq import Groq
 
 def normalized_table_groq(contract_id: str):
     # 🔐 SET API KEY HERE (Jupyter-safe)
-    GROQ_API_KEY = ""
-    os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-
     print(f"\n📄 Processing contract: {contract_id}")
 
     # 🔍 Retrieve only PRICING_RELATED chunks from Chroma
@@ -110,7 +107,9 @@ def normalized_table_groq(contract_id: str):
     ]
 
     # 🚀 Create Groq client
-    client = Groq(api_key=GROQ_API_KEY)
+    client = Groq(
+        api_key=os.getenv("GROQ_API_KEY")
+    )
 
     results = {}
 
@@ -120,7 +119,7 @@ def normalized_table_groq(contract_id: str):
         prompt_filled = base_prompt.replace("<<CONTRACT_TEXT>>", context)
 
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="llama-3.3-70b-versatile",
             temperature=0,
             messages=[
                 {

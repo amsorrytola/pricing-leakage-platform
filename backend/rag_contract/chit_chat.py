@@ -40,10 +40,6 @@ import os
 from groq import Groq
 
 def chat(contract_id: str, query: str):
-    # 🔐 SET API KEY HERE (Jupyter-safe)
-    GROQ_API_KEY = ""
-    os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-
     # 🔍 Retrieve relevant chunks from Chroma
     docs = retrieve_contract_context(contract_id, query)
 
@@ -70,7 +66,9 @@ QUESTION:
 """
 
     # 🚀 Groq client
-    client = Groq(api_key=GROQ_API_KEY)
+    client = Groq(
+        api_key=os.getenv("GROQ_API_KEY")
+    )
 
     response = client.chat.completions.create(
         model="llama-3.1-8b-instant",

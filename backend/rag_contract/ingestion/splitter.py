@@ -43,7 +43,7 @@ def split_contract(text: str, source_path: str):
     )
 
     return splitter.split_documents(docs)
-def classify_chunk(text: str, model: str = "llama3.1:8b") -> str:
+def classify_chunk(text: str, model: str = "llama-3.3-70b-versatile") -> str:
     prompt = CLASSIFY_PRICING_PROMPT.format(text=text)
 
     response = ollama.chat(
