@@ -56,7 +56,7 @@ export default function Sidebar() {
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-bold text-slate-900 leading-none">Pricing</span>
+            <span className="text-sm font-bold text-slate-900 leading-none">LeakGuard Ai</span>
             <span className="text-xs text-slate-500 leading-none mt-0.5">Intelligence</span>
           </div>
         </div>

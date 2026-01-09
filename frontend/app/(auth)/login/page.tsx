@@ -39,8 +39,12 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg" />
-            <span className="text-2xl font-bold text-slate-900">Pricing Intelligence</span>
+            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-md flex items-center justify-center">
+            <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+            <span className="text-2xl font-bold text-slate-900">LeakGuard Ai</span>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
           <p className="text-slate-600">Sign in to your workspace</p>

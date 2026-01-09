@@ -12,7 +12,7 @@ type Service = {
   _key: string;
 };
 
-export default function ServiceLogCard({ contractId }: { contractId: string }) {
+export default function ServiceLogCard({ contractId, normalized, setNormalized }: { contractId: string; normalized: any; setNormalized: any }) {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +35,7 @@ export default function ServiceLogCard({ contractId }: { contractId: string }) {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [contractId]);
+  }, [contractId, normalized, setNormalized]);
 
   if (loading) {
     return (

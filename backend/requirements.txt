@@ -9,3 +9,5 @@ groq
 ollama
 pypdf
 openai
+chromadb
+nomic-embed-text

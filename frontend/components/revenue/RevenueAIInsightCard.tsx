@@ -431,7 +431,7 @@ export default function RevenueAIInsightCard({
                                   </p>
                                   <p className="text-lg font-bold text-slate-900">
                                     {typeof value === "number"
-                                      ? `₹${Math.abs(
+                                      ? `${Math.abs(
                                           value
                                         ).toLocaleString()}`
                                       : String(value)}

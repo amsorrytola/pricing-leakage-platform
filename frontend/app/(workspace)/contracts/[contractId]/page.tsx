@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 import { fetchContractText, normalizeContract } from "@/lib/api";
 import ServiceLogCard from "@/components/ServiceLogCard";
 
@@ -35,7 +36,6 @@ export default function ContractPage() {
 
     async function loadContract() {
       try {
-        // 1️⃣ Fetch contract metadata (SAFE)
         const metaRes = await fetch(
           `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/${contractId}`
         );
@@ -44,7 +44,6 @@ export default function ContractPage() {
         const metadata = await metaRes.json();
         setContractMetadata(metadata);
 
-        // 2️⃣ Fetch signed PDF URL (SAFE)
         if (metadata.file_path) {
           const pdfRes = await fetch(
             `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/${contractId}/pdf-url`
@@ -56,7 +55,6 @@ export default function ContractPage() {
           }
         }
 
-        // 3️⃣ Fetch extracted text
         const textData = await fetchContractText(contractId);
         setText(textData.raw_text);
       } catch (err) {
@@ -81,23 +79,18 @@ export default function ContractPage() {
     if (contractId) loadNormalized();
   }, [contractId]);
 
-
-
-
-
   async function handleNormalize() {
+    setLoadingServices(true);
+
     const res = await normalizeContract(contractId);
     setNormalized(res.terms);
 
-    setLoadingServices(true);
     const svc = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE}/api/contracts/${contractId}/billable-services`
     ).then((r) => r.json());
     setServices(svc.services || []);
     setLoadingServices(false);
   }
-
-
 
   async function sendChat() {
     setChatLoading(true);
@@ -118,12 +111,35 @@ export default function ContractPage() {
     <div className="h-full flex gap-6 overflow-hidden">
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <div className="mb-4 flex-shrink-0">
-          <h1 className="text-2xl font-bold text-slate-900 mb-1">
-            {contractMetadata?.name || "Contract Analysis"}
-          </h1>
-          <p className="text-sm text-slate-600">
-            Review contract document and extracted intelligence
-          </p>
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900 mb-1">
+                {contractMetadata?.name || "Contract Analysis"}
+              </h1>
+              <p className="text-sm text-slate-600">
+                Review contract document and extracted intelligence
+              </p>
+            </div>
+            <Link
+              href={`/contracts/${contractId}/revenue-analysis`}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 text-sm font-semibold text-white shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
+            >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+              Revenue Analysis
+            </Link>
+          </div>
         </div>
 
         <div className="flex-1 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
@@ -229,22 +245,47 @@ export default function ContractPage() {
             {!normalized ? (
               <button
                 onClick={handleNormalize}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all"
+                disabled={loadingServices}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                  />
-                </svg>
-                Normalize Contract
+                {loadingServices ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Normalizing...
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      />
+                    </svg>
+                    Normalize Contract
+                  </>
+                )}
               </button>
             ) : (
               <div className="space-y-3">
@@ -288,12 +329,11 @@ export default function ContractPage() {
           </div>
         </div>
 
-        <ServiceLogCard contractId={contractId} />
-
-
-        
-
-        
+        <ServiceLogCard
+          contractId={contractId}
+          normalized={normalized}
+          setNormalized={setNormalized}
+        />
 
         <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-indigo-50 to-purple-50">
@@ -326,7 +366,7 @@ export default function ContractPage() {
 
           <div className="p-6 space-y-4 text-slate-900">
             <textarea
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm resize-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Ask about pricing terms, clauses, or specific details..."
@@ -335,8 +375,8 @@ export default function ContractPage() {
 
             <button
               onClick={sendChat}
-              disabled={chatLoading}
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50"
+              disabled={chatLoading || !chatInput.trim()}
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {chatLoading ? (
                 <>

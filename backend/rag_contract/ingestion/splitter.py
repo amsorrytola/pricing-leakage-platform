@@ -3,7 +3,7 @@ import re
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from rag_contract.rag.prompts import CLASSIFY_PRICING_PROMPT
-import ollama
+from groq import Groq
 
 
 def split_contract(text: str, source_path: str):
@@ -43,18 +43,36 @@ def split_contract(text: str, source_path: str):
     )
 
     return splitter.split_documents(docs)
+
 def classify_chunk(text: str, model: str = "llama-3.3-70b-versatile") -> str:
+    client = Groq(
+        api_key=os.getenv("GROQ_API_KEY")
+    )
     prompt = CLASSIFY_PRICING_PROMPT.format(text=text)
 
-    response = ollama.chat(
+    response = client.chat.completions.create(
         model=model,
-        messages=[{"role": "user", "content": prompt}],
-        options={"temperature": 0}
+        temperature=0,
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are a classifier. "
+                    "Return ONLY the classification label. "
+                    "No explanations."
+                )
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
     )
 
-    label = response["message"]["content"].strip()
+    label = response.choices[0].message.content.strip()
     return label
-def classify_documents(docs, model="llama3.1:8b"):
+
+def classify_documents(docs, model="llama-3.3-70b-versatile"):
     classified_docs = []
 
     for doc in docs:

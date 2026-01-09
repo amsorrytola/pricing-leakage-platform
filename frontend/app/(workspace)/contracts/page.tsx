@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import PageHeader from "@/components/ui/PageHeader";
-import StatusPill from "@/components/ui/StatusPill";
 import { getInstitutionId } from "@/lib/auth";
 import { fetchContractsPaginated } from "@/lib/api";
 
@@ -241,7 +240,6 @@ export default function ContractsPage() {
                       Not analyzed
                     </span>
                   )}
-                  <StatusPill status={c.leakage_severity} />
                 </div>
               </div>
             </div>
